@@ -1,0 +1,3 @@
+crm_tools_homepage:
+    path:     /
+    defaults: { _controller: CRMToolsBundle:Default:index }
