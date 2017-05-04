@@ -1,0 +1,280 @@
+<?php
+
+namespace CRM\ToolsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CrmLogs
+ *
+ * @ORM\Table(name="crm_logs")
+ * @ORM\Entity(repositoryClass="CRM\ToolsBundle\Repository\CrmLogsRepository")
+ */
+class CrmLogs
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\CrmJobs")
+     * @ORM\JoinColumn(name="idJobs", referencedColumnName="id", nullable=false)
+     */
+    private $idJobs;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fileName", type="string", length=255)
+     */
+    private $fileName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fileDate", type="date")
+     */
+    private $fileDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDebut", type="datetime")
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFin", type="datetime")
+     */
+    private $dateFin;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="iteration", type="integer", nullable=true)
+     */
+    private $iteration;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbrClient", type="integer", nullable=true)
+     */
+    private $nbrClient;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbrBooking", type="integer", nullable=true)
+     */
+    private $nbrBooking;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbrEvent", type="integer", nullable=true)
+     */
+    private $nbrEvent;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fileName
+     *
+     * @param string $fileName
+     * @return CrmLogs
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    /**
+     * Get fileName
+     *
+     * @return string 
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * Set fileDate
+     *
+     * @param \DateTime $fileDate
+     * @return CrmLogs
+     */
+    public function setFileDate($fileDate)
+    {
+        $this->fileDate = $fileDate;
+
+        return $this;
+    }
+
+    /**
+     * Get fileDate
+     *
+     * @return \DateTime 
+     */
+    public function getFileDate()
+    {
+        return $this->fileDate;
+    }
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     * @return CrmLogs
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime 
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     * @return CrmLogs
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime 
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * Set iteration
+     *
+     * @param integer $iteration
+     * @return CrmLogs
+     */
+    public function setIteration($iteration)
+    {
+        $this->iteration = $iteration;
+
+        return $this;
+    }
+
+    /**
+     * Get iteration
+     *
+     * @return integer 
+     */
+    public function getIteration()
+    {
+        return $this->iteration;
+    }
+
+    /**
+     * Set nbrClient
+     *
+     * @param integer $nbrClient
+     * @return CrmLogs
+     */
+    public function setNbrClient($nbrClient)
+    {
+        $this->nbrClient = $nbrClient;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrClient
+     *
+     * @return integer 
+     */
+    public function getNbrClient()
+    {
+        return $this->nbrClient;
+    }
+
+    /**
+     * Set nbrBooking
+     *
+     * @param integer $nbrBooking
+     * @return CrmLogs
+     */
+    public function setNbrBooking($nbrBooking)
+    {
+        $this->nbrBooking = $nbrBooking;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrBooking
+     *
+     * @return integer 
+     */
+    public function getNbrBooking()
+    {
+        return $this->nbrBooking;
+    }
+
+    /**
+     * Set nbrEvent
+     *
+     * @param integer $nbrEvent
+     * @return CrmLogs
+     */
+    public function setNbrEvent($nbrEvent)
+    {
+        $this->nbrEvent = $nbrEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrEvent
+     *
+     * @return integer 
+     */
+    public function getNbrEvent()
+    {
+        return $this->nbrEvent;
+    }
+}
