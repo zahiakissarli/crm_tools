@@ -15,9 +15,9 @@ class CrmJobs
 
     /**
      * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\GraphName")
-     * @ORM\JoinColumn(name="idGraph", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="graphName", nullable=false)
      */
-    private $idGraph;
+    private $graphName;
 
     /**
      * @var int
@@ -150,5 +150,28 @@ class CrmJobs
     public function getGraphName()
     {
         return $this->graphName;
+    }
+
+    /**
+     * Set idGraph
+     *
+     * @param \CRM\ToolsBundle\Entity\GraphName $idGraph
+     * @return CrmJobs
+     */
+    public function setIdGraph(\CRM\ToolsBundle\Entity\GraphName $idGraph)
+    {
+        $this->idGraph = $idGraph;
+
+        return $this;
+    }
+
+    /**
+     * Get idGraph
+     *
+     * @return \CRM\ToolsBundle\Entity\GraphName 
+     */
+    public function getIdGraph()
+    {
+        return $this->idGraph;
     }
 }

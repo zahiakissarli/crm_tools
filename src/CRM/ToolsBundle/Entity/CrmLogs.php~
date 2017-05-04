@@ -14,9 +14,9 @@ class CrmLogs
 {
     /**
      * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\CrmJobs")
-     * @ORM\JoinColumn(name="idJobs", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="crmJobs", nullable=false)
      */
-    private $idJobs;
+    private $crmJobs;
 
     /**
      * @var int
@@ -276,5 +276,28 @@ class CrmLogs
     public function getNbrEvent()
     {
         return $this->nbrEvent;
+    }
+
+    /**
+     * Set idJobs
+     *
+     * @param \CRM\ToolsBundle\Entity\CrmJobs $idJobs
+     * @return CrmLogs
+     */
+    public function setIdJobs(\CRM\ToolsBundle\Entity\CrmJobs $idJobs)
+    {
+        $this->idJobs = $idJobs;
+
+        return $this;
+    }
+
+    /**
+     * Get idJobs
+     *
+     * @return \CRM\ToolsBundle\Entity\CrmJobs 
+     */
+    public function getIdJobs()
+    {
+        return $this->idJobs;
     }
 }

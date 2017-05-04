@@ -16,8 +16,8 @@ class DefaultController extends Controller
     public function creatAction()
     {
         $graph = new GraphName();
-        $graph->setName('UCR_VERS_RES_LIMA');
-        $graph->setEnableDisplay('0');
+        $graph->setName('UCR_NEO_B2B');
+        $graph->setEnableDisplay('1');
         $graph->setAverageDurationJob(120);
 
         $em = $this->getDoctrine()->getManager();
