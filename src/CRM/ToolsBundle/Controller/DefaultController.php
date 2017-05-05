@@ -10,13 +10,14 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CRMToolsBundle:Default:index.html.twig');
+//        return $this->render('CRMToolsBundle:Default:index.html.twig');
+        return $this->render('CRMToolsBundle:Monitoring:graphPerformance.html.twig');
     }
 
     public function creatAction()
     {
         $graph = new GraphName();
-        $graph->setName('UCR_NEO_B2B');
+        $graph->setName('UCR_TABLES_DE_REF');
         $graph->setEnableDisplay('1');
         $graph->setAverageDurationJob(120);
 

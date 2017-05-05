@@ -4,11 +4,25 @@
         <meta charset="UTF-8" />
         <title>{% block title %}CRM Tools{% endblock %}</title>
 
-        {% block stylesheets %}{% endblock %}
+        {% stylesheets filter='?yui_css, cssrewrite'
+            '@CRMToolsBundle/Resources/public/css/style.css'
+            'css/bootstrap.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+
+
+
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+        {% endblock %}
+
+
+        {% javascripts '@CRMToolsBundle/Resources/public/js/main.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
     </body>
 </html>
