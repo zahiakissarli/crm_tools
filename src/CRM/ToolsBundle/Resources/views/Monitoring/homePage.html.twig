@@ -1,0 +1,39 @@
+{# src/OC/PlatformBundle/Resources/views/Monitoring/graphPerformance.html.twig #}
+
+{% extends "CRMToolsBundle::layout.html.twig" %}
+
+{% block title %}
+     test - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div style="margin-top: 50px;"></div>
+    <div class="row">
+        <div class="col-md-12 blocHorizontaLineHead">
+            <div class="col-md-3">
+                <div class="buttonGuidelinesGreenHead">
+                    <p class="textbuttonGuidelinesHead">Exigences d’infrastructure</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="buttonGuidelinesGrayHead">
+                    <p class="textbuttonGuidelinesHead">Exigences de sécurité</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="buttonGuidelinesOrangeHead">
+                    <p class="textbuttonGuidelinesHead">Exigences de prestation</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="buttonGuidelinesPurpleHead">
+                    <p class="textbuttonGuidelinesHead">Exigences de service</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}

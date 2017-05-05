@@ -77,3 +77,45 @@ assetic:
             jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
         yui_css:
             jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
+
+#services:
+#    listener:
+#        class: Doctrine\DBAL\Event\Listeners\OracleSessionInit
+#        tags:
+#            - { name: doctrine.event_listener, event: postConnect }
+
+
+
+#doctrine:
+#    dbal:
+#        default_connection: default
+#        connection:
+#            default:
+#                driver:   pdo_mysql
+#                host:     '%database_host%'
+#                port:     '%database_port%'
+#                dbname:   '%database_name%'
+#                user:     '%database_user%'
+#                password: '%database_password%'
+#                charset:  UTF8
+#            customer:
+#                driver:   pdo_oci
+#                host:     172.18.2.168
+#                port:     1521
+#                dbname:   Q4
+#                user:     zkissarli
+#                password: ZKISSARLI
+#                charset:  UTF8
+#
+#    orm:
+#        default_entity_manager: default
+#        entity_managers:
+#            default:
+#                connection: default
+#                mappings:
+#                    AppBundle:  ~
+#                    CRMToolsssBundle: ~
+#            customer:
+#                connection: customer
+#                mappings:
+#                    CRMToolsssBundle: ~
