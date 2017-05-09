@@ -5,9 +5,10 @@
 }
 
 body {
-    width: 95%;
+    width: 90%;
     display: block;
     margin: auto !important;
+    /*font-family: "Trebuchet MS",Arial,Helvetica,sans-serif !important;*/
 }
 
 .thLarger{
@@ -45,4 +46,55 @@ body {
 
 .middleText{
     text-align: center;
+}
+
+/***********************************************HOME PAGE********************************/
+
+.homePage{
+    width: 75%;
+    /*display: block;*/
+    margin: auto !important;
+    margin-top: 200px !important;
+}
+
+.colonneMenu{
+    box-shadow: 2px 2px 3px #aaaaaa;
+    /*border: 1px solid red;*/
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    margin-right: 15px;
+}
+
+.menuHomePage .headMenu{
+    background-color: #00008B;
+    border: 1px solid #00008B;
+}
+
+.menuHomePage .headMenu p{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.menuHomePage .bodyMenu{
+    background-color: #E8E8E8;
+    border: 1px solid #00008B;
+    height: 360px;
+}
+
+.menuHomePage .bodyMenu ul li, .menuHomePage .bodyMenu ul li a{
+    color: #00008B;
+    margin: 20px 0px;
+    font-size: 18px;
+    font-weight: bolder ;
+   margin-right: 3px !important;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif !important;
+    margin-right: 2px;
+    /*border: 1px solid red;*/
+}
+
+.menuHomePage .bodyMenu ul li a:hover, .menuHomePage .bodyMenu ul li a:focus{
+    color: #0099FF;
 }

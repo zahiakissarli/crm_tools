@@ -10,3 +10,7 @@ crm_tools_display:
     path:     /display
     defaults: { _controller: CRMToolsBundle:Default:display }
 
+crm_tools_graph:
+    path:     /graph_performance
+    defaults: { _controller: CRMToolsBundle:Default:graph }
+

@@ -3,37 +3,99 @@
 {% extends "CRMToolsBundle::layout.html.twig" %}
 
 {% block title %}
-     test - {{ parent() }}
+     Page d'accueil - {{ parent() }}
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
-    <div style="margin-top: 50px;"></div>
-    <div class="row">
-        <div class="col-md-12 blocHorizontaLineHead">
-            <div class="col-md-3">
-                <div class="buttonGuidelinesGreenHead">
-                    <p class="textbuttonGuidelinesHead">Exigences d’infrastructure</p>
+
+    <div class="homePage">
+
+        <div class="col-md-12 menuHomePage">
+            <div class="col-md-2 col-md-offset-1 colonneMenu">
+                <div class="headMenu">
+                    <p class="">Monitoring</p>
+                </div>
+                <div class="bodyMenu">
+                    <ul>
+                        <li><a href="{{ path('crm_tools_graph') }}">Graphs Perfomance</a></li>
+                        <li>Log Error</li>
+                        <li>CRM Weather</li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="buttonGuidelinesGrayHead">
-                    <p class="textbuttonGuidelinesHead">Exigences de sécurité</p>
+
+            <div class="col-md-2 colonneMenu">
+                <div class="headMenu">
+                    <p class="">UCR Search Engine</p>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="buttonGuidelinesOrangeHead">
-                    <p class="textbuttonGuidelinesHead">Exigences de prestation</p>
+                <div class="bodyMenu">
+                    <ul>
+                        <li>Equipe RC Contact et booking</li>
+                    </ul>
                 </div>
+
             </div>
-            <div class="col-md-3">
-                <div class="buttonGuidelinesPurpleHead">
-                    <p class="textbuttonGuidelinesHead">Exigences de service</p>
+
+            <div class="col-md-2 colonneMenu">
+                <div class="headMenu">
+                    <p class="">Dataquality</p>
                 </div>
+                <div class="bodyMenu">
+                    <ul>
+                        <li>Dataquality</li>
+                        <li>Dataquality Bis</li>
+                        <li>Métriques</li>
+                    </ul>
+                </div>
+
             </div>
+
+            <div class="col-md-2 colonneMenu">
+                <div class="headMenu">
+                    <p class="">Tool Box</p>
+                </div>
+                <div class="bodyMenu">
+                    <ul>
+                        <li>Qualité UCR</li>
+                        <li>Qualité Propriétaire</li>
+                        <li>Qualité Anonymisation</li>
+                        <li>Qualité PV</li>
+                        <li>Qualité Référence</li>
+                        <li>Qualité Midas</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-md-2 colonneMenu">
+                <div class="headMenu">
+                    <p class="">Intégration Fichiers</p>
+                </div>
+                <div class="bodyMenu">
+                    <ul>
+                        <li>File Upload</li>
+                        <li>Business View</li>
+                    </ul>
+                </div>
+
+            </div>
+
         </div>
 
 
+        {#<div class="row col-md-12" style="border: 1px solid red;">#}
+            {#<div class="col-md-2  blockMenu" style="border: 1px solid blue; height: 50px;">#}
+
+            {#</div>#}
+            {#<div class="col-md-2 blockMenu" style="border: 1px solid blue; height: 50px;"></div>#}
+            {#<div class="col-md-2 blockMenu" style="border: 1px solid blue; height: 50px;"></div>#}
+            {#<div class="col-md-2 blockMenu" style="border: 1px solid blue; height: 50px;"></div>#}
+            {#<div class="col-md-2 blockMenu" style="border: 1px solid blue; height: 50px;"></div>#}
+        {#</div>#}
+
 
     </div>
+
+
 {% endblock %}

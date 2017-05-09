@@ -3,12 +3,13 @@
 {% extends "CRMToolsBundle::layout.html.twig" %}
 
 {% block title %}
-     test - {{ parent() }}
+     Graph performance - {{ parent() }}
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
     <div style="margin-top: 50px;"></div>
+    <div class="graphPage">
     <div class="bs-example col-md-12" data-example-id="simple-responsive-table" >
         <div class="table-responsive">
             <table class=" table table-bordered">
@@ -79,5 +80,6 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 {% endblock %}

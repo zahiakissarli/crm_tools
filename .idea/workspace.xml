@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56d79571-531d-40ad-9fda-2cf8d75da8ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php" />
-    </list>
+    <list default="true" id="56d79571-531d-40ad-9fda-2cf8d75da8ca" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -552,7 +547,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43539000" />
+    <option name="totallyTimeSpent" value="43597000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

@@ -10,8 +10,14 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-//        return $this->render('CRMToolsBundle:Default:index.html.twig');
-        return $this->render('CRMToolsBundle:Monitoring:homePage.html.twig');
+        return $this->render('CRMToolsBundle:Monitoring:homepage.html.twig');
+//        return $this->render('CRMToolsBundle:Monitoring:homePage.html.twig');
+    }
+
+    public function graphAction()
+    {
+        return $this->render('CRMToolsBundle:Monitoring:graphPerformance.html.twig');
+//        return $this->render('CRMToolsBundle:Monitoring:homePage.html.twig');
     }
 
     public function creatAction()
