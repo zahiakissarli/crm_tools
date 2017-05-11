@@ -7,9 +7,14 @@
 
         {% stylesheets filter='?yui_css, cssrewrite'
             '@CRMToolsBundle/Resources/public/css/style.css'
+            '@CRMToolsBundle/Resources/public/css/menu_nav_bar.css'
             'css/bootstrap.css'
+            'css/bootstrap.min.css'
+            'css/bootstrap-theme.css'
+            'css/bootstrap-theme.min.css'
         %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
         {% endstylesheets %}
 
 
@@ -22,8 +27,17 @@
         {% endblock %}
 
 
-        {% javascripts '@CRMToolsBundle/Resources/public/js/main.js' %}
+        {% javascripts
+        'js/jquery.js'
+        'js/bootstrap.js'
+        'js/bootstrap.min.js'
+        '@CRMToolsBundle/Resources/public/js/main.js'
+
+        %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
         {% endjavascripts %}
     </body>
 </html>
+<!-- Bootstrap Date-Picker Plugin -->

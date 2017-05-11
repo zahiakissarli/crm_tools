@@ -44,16 +44,23 @@ class CrmLogs
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDebut", type="datetime")
+     * @ORM\Column(name="firstDate", type="datetime")
      */
-    private $dateDebut;
+    private $firstDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateFin", type="datetime")
+     * @ORM\Column(name="endDate", type="datetime")
      */
-    private $dateFin;
+    private $endDate;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="duration", type="integer", nullable=true)
+     */
+    private $duration;
 
     /**
      * @var int
@@ -141,49 +148,72 @@ class CrmLogs
     }
 
     /**
-     * Set dateDebut
+     * Set firstDate
      *
-     * @param \DateTime $dateDebut
+     * @param \DateTime $firstDate
      * @return CrmLogs
      */
-    public function setDateDebut($dateDebut)
+    public function setFirstDate($firstDate)
     {
-        $this->dateDebut = $dateDebut;
+        $this->firstDate = $firstDate;
 
         return $this;
     }
 
     /**
-     * Get dateDebut
+     * Get firstDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getDateDebut()
+    public function getFirstDate()
     {
-        return $this->dateDebut;
+        return $this->firstDate;
     }
 
     /**
-     * Set dateFin
+     * Set endDate
      *
-     * @param \DateTime $dateFin
+     * @param \DateTime $endDate
      * @return CrmLogs
      */
-    public function setDateFin($dateFin)
+    public function setEndDate($endDate)
     {
-        $this->dateFin = $dateFin;
+        $this->endDate = $endDate;
 
         return $this;
     }
 
     /**
-     * Get dateFin
+     * Get endDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getDateFin()
+    public function getEndDate()
     {
-        return $this->dateFin;
+        return $this->endDate;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     * @return CrmLogs
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer
+     */
+    public function getDuration()
+    {
+        return $this->duration;
     }
 
     /**

@@ -16,7 +16,13 @@ class DefaultController extends Controller
 
     public function graphAction()
     {
-        return $this->render('CRMToolsBundle:Monitoring:graphPerformance.html.twig');
+        $time = new \DateTime();
+        $time= $time->format('d-m-Y');
+//        var_dump($time) ;die;
+
+        return $this->render('CRMToolsBundle:Monitoring:graphPerformance.html.twig', array(
+            'currentDate' => $time,
+        ));
 //        return $this->render('CRMToolsBundle:Monitoring:homePage.html.twig');
     }
 
