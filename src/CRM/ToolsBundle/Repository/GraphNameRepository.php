@@ -20,6 +20,8 @@ class GraphNameRepository extends EntityRepository
             ->andWhere('g.id = 1')
             ->getQuery();
 
+        
+
         return $graphs=$qb->getResult();
     }
 }

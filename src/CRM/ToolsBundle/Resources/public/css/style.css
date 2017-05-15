@@ -30,26 +30,27 @@ body {
 }
 
 .menuHomePage .headMenu{
-    background-color: #00008B;
-    border: 1px solid #00008B;
+    background-color: #37519f;
+    border: 1px solid #37519f;
+
 }
 
 .menuHomePage .headMenu p{
     text-align: center;
-    /*font-weight: normal;*/
+    font-weight: bold;
     margin-top: 10px;
-    font-size: 19px;
+    font-size: 15px;
     color: #fff;
 }
 
 .menuHomePage .bodyMenu{
     background-color: #E8E8E8;
-    border: 1px solid #00008B;
+    border: 1.5px solid #37519f;
     height: 370px;
 }
 
 .menuHomePage .bodyMenu ul li, .menuHomePage .bodyMenu ul li a{
-    color: #00008B;
+    color: #37519f;
     margin: 20px 0px;
     font-size: 18px;
     margin-right: 3px !important;

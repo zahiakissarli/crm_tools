@@ -87,15 +87,16 @@
                 <div class="row">
                     <div class="col-md-12">
 
+
                         <!-- Form code begins -->
-                        <form method="post">
+                        <form action="{{path("crm_tools_graph")}}" method="GET">
                             <div class="form-group col-md-2"> <!-- Date input -->
                                 <label class="control-label" for="date">Date debut</label>
-                                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                                <input class="form-control" id="date" name="date" placeholder="{{ startDate }}" type="text"/>
                             </div>
                             <div class="form-group col-md-2"> <!-- Date input -->
                                 <label class="control-label" for="date">Date fin</label>
-                                <input class="form-control" id="date" name="date" placeholder="{{ currentDate }}" type="text"/>
+                                <input class="form-control" id="date" name="date" placeholder="{{ endDate }}" type="text"/>
                             </div>
                             <div class="form-group"> <!-- Submit button -->
                                 <button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>
@@ -108,75 +109,30 @@
             </div>
         </div><!-- end of datepicker form -->
 
-        {#<div class="container containerMenuNav">#}
-        {#<div class="col-md-12 menuNavBar">#}
-        {#<ul class=" nav nav-pills">#}
-        {#<li class="dropdown col-md-2 col-md-offset-1 firsTitleMenuNav">#}
-        {#<a href="#" data-toggle="dropdown" class="dropdown-toggle">Monitoring<b class="caret"></b></a>#}
-        {#<ul class="dropdown-menu " id="menu1">#}
-        {#<li><a href="{{ path('crm_tools_graph') }}">Graphs Perfomance</a></li>#}
-        {#<li class="divider"></li>#}
-        {#<li><a href="#">Log Error</a></li>#}
-        {#<li><a href="#">CRM Weather</a></li>#}
-        {#</ul>#}
-        {#</li>#}
-        {#<li class="dropdown col-md-2 firsTitleMenuNav">#}
-        {#<a href="#" data-toggle="dropdown" class="dropdown-toggle">UCR Search Engine<b class="caret"></b></a>#}
-        {#<ul class="dropdown-menu" id="menu1">#}
-        {#<li><a href="#">Equipe RC Contact et booking</a></li>#}
-        {#</ul>#}
-        {#</li>#}
-        {#<li class="dropdown col-md-2 firsTitleMenuNav">#}
-        {#<a href="#" data-toggle="dropdown" class="dropdown-toggle">Dataquality<b class="caret"></b></a>#}
-        {#<ul class="dropdown-menu" id="menu1">#}
-        {#<li><a href="#">Dataquality</a></li>#}
-        {#<li><a href="#">Dataquality Bis</a></li>#}
-        {#<li><a href="#">Métriques</a></li>#}
-        {#</ul>#}
-        {#</li>#}
-        {#<li class="dropdown col-md-2 firsTitleMenuNav">#}
-        {#<a href="#" data-toggle="dropdown" class="dropdown-toggle">Tool Box<b class="caret"></b></a>#}
-        {#<ul class="dropdown-menu" id="menu1">#}
-        {#<li><a href="#">Qualité UCR</a></li>#}
-        {#<li><a href="#">Qualité Propriétaire</a></li>#}
-        {#<li><a href="#">Qualité Anonymisation</a></li>#}
-        {#<li><a href="#">Qualité PV</a></li>#}
-        {#<li><a href="#">Qualité Référence</a></li>#}
-        {#<li><a href="#">Qualité Midas</a></li>#}
-        {#</ul>#}
-        {#</li>#}
-        {#<li class="dropdown col-md-2 firsTitleMenuNav">#}
-        {#<a href="#" data-toggle="dropdown" class="dropdown-toggle">Intégration Fichiers<b class="caret"></b></a>#}
-        {#<ul class="dropdown-menu" id="menu1">#}
-        {#<li><a href="#">File Upload</a></li>#}
-        {#<li><a href="#">Business View</a></li>#}
-        {#</ul>#}
-        {#</li>#}
-        {#</ul>#}
-        {#</div>#}
-        {#</div>#}
-
         <div class="graphPage">
             <div class="bs-example col-md-12" data-example-id="simple-responsive-table" >
                 <div class="table-responsive">
                     <table class=" table table-bordered">
                         <thead >
-                        <tr >
-                            <th class="row">Nom du fichier</th>
-                            <th>19-04-2017</th>
-                            <th>19-04-2017</th>
-                            <th>19-04-2017</th>
-                            <th>19-04-2017</th>
-                            <th>19-04-2017</th>
-                            <th>19-04-2017</th>
-                            <th>19-04-2017</th>
-                            <th>19-04-2017</th>
-                            <th class="middleText">Moyenne Semaine </br> Du '13-04-2017' </br> Au '19-04-2017'</th>
-                            <th class="middleText">Moyenne Semaine </br> Du '13-04-2017' </br> Au '19-04-2017'</th>
-                            <th class="middleText">Moyenne Semaine </br> Du '13-04-2017' </br> Au '19-04-2017'</th>
-                            <th class="middleText">Moyenne Semaine </br> Du '13-04-2017' </br> Au '19-04-2017'</th>
+                            <tr >
+                                <th class="row">Nom du fichier</th>
+                                {% for date in date_array %}
+                                    <th>{{ date }}</th>
+                                {% endfor %}
+                                <th class="middleText">Moyenne Semaine </br> Du '{{ startDate }}'</br> Au '{{ endDate }}'</th>
 
-                        </tr>
+                                {% for key,dates in week_array %}
+                                    {#{{ dump(key) }}#}
+                                    {% if key == 0 %}
+                                        <th class="middleText">Moyenne Semaine -1 </br> '{{ dates['0'] }}' </br> Au '{{ dates['1'] }}'</th>
+                                    {% elseif key == 1 %}
+                                        <th class="middleText">Moyenne mois </br> '{{ dates['0'] }}' </br> Au '{{ dates['1'] }}'</th>
+                                    {% elseif key == 2 %}
+                                        <th class="middleText">Moyenne mois -1</br> '{{ dates['0'] }}' </br> Au '{{ dates['1'] }}'</th>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </tr>
                         </thead>
                         <tbody >
                         <tr>
