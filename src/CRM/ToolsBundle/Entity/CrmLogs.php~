@@ -44,9 +44,9 @@ class CrmLogs
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="firstDate", type="datetime")
+     * @ORM\Column(name="startDate", type="datetime")
      */
-    private $firstDate;
+    private $startDate;
 
     /**
      * @var \DateTime
@@ -148,29 +148,6 @@ class CrmLogs
     }
 
     /**
-     * Set firstDate
-     *
-     * @param \DateTime $firstDate
-     * @return CrmLogs
-     */
-    public function setFirstDate($firstDate)
-    {
-        $this->firstDate = $firstDate;
-
-        return $this;
-    }
-
-    /**
-     * Get firstDate
-     *
-     * @return \DateTime
-     */
-    public function getFirstDate()
-    {
-        return $this->firstDate;
-    }
-
-    /**
      * Set endDate
      *
      * @param \DateTime $endDate
@@ -191,6 +168,29 @@ class CrmLogs
     public function getEndDate()
     {
         return $this->endDate;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     * @return CrmLogs
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer
+     */
+    public function getDuration()
+    {
+        return $this->duration;
     }
 
     /**

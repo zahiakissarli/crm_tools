@@ -151,27 +151,4 @@ class CrmJobs
     {
         return $this->graphName;
     }
-
-    /**
-     * Set idGraph
-     *
-     * @param \CRM\ToolsBundle\Entity\GraphName $idGraph
-     * @return CrmJobs
-     */
-    public function setIdGraph(\CRM\ToolsBundle\Entity\GraphName $idGraph)
-    {
-        $this->idGraph = $idGraph;
-
-        return $this;
-    }
-
-    /**
-     * Get idGraph
-     *
-     * @return \CRM\ToolsBundle\Entity\GraphName 
-     */
-    public function getIdGraph()
-    {
-        return $this->idGraph;
-    }
 }

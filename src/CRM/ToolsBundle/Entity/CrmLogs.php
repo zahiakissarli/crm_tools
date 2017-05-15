@@ -44,9 +44,9 @@ class CrmLogs
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="firstDate", type="datetime")
+     * @ORM\Column(name="startDate", type="datetime")
      */
-    private $firstDate;
+    private $startDate;
 
     /**
      * @var \DateTime
@@ -145,29 +145,6 @@ class CrmLogs
     public function getFileDate()
     {
         return $this->fileDate;
-    }
-
-    /**
-     * Set firstDate
-     *
-     * @param \DateTime $firstDate
-     * @return CrmLogs
-     */
-    public function setFirstDate($firstDate)
-    {
-        $this->firstDate = $firstDate;
-
-        return $this;
-    }
-
-    /**
-     * Get firstDate
-     *
-     * @return \DateTime
-     */
-    public function getFirstDate()
-    {
-        return $this->firstDate;
     }
 
     /**
@@ -329,5 +306,28 @@ class CrmLogs
     public function getCrmJobs()
     {
         return $this->crmJobs;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     * @return CrmLogs
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
     }
 }

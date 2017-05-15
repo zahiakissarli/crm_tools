@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="56d79571-531d-40ad-9fda-2cf8d75da8ca" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/GraphNameRepository.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/GraphNameRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/style.css" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/CrmLogs.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/CrmLogs.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/graphPerformance.html.twig" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/graphPerformance.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/fe3b0e7.css" afterPath="$PROJECT_DIR$/web/css/fe3b0e7.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/fe3b0e7_style_1.css" afterPath="$PROJECT_DIR$/web/css/fe3b0e7_style_1.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,7 +41,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphNameRepository.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GraphNameRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/GraphNameRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="462">
@@ -78,18 +74,18 @@
       <file leaf-file-name="CrmLogs.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/CrmLogs.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
-              <caret line="184" column="0" lean-forward="false" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+            <state relative-caret-position="350">
+              <caret line="316" column="43" lean-forward="false" selection-start-line="316" selection-start-column="34" selection-end-line="316" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="graphPerformance.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="graphPerformance.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/graphPerformance.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="42" column="57" lean-forward="false" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -98,8 +94,8 @@
       <file leaf-file-name="homePage.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="72" column="52" lean-forward="false" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+            <state relative-caret-position="105">
+              <caret line="41" column="37" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -164,6 +160,8 @@
       <find>.menuHomePage .bodyMenu</find>
       <find>dateDebut</find>
       <find>start_month_avg</find>
+      <find>first</find>
+      <find>startDate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -183,15 +181,15 @@
         <option value="$PROJECT_DIR$/web/css/e8bae4a.css" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePagehtml..twig" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/CrmLogs.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/menu_nav_bar.css" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/js/main.js" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/style.css" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/graphPerformance.html.twig" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/GraphNameRepository.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/CrmLogs.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/graphPerformance.html.twig" />
       </list>
     </option>
   </component>
@@ -299,7 +297,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Repository" />
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -325,7 +327,41 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Monitoring" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm_tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm_tools" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CRM" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ToolsBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -465,12 +501,12 @@
       <option name="presentableId" value="Default" />
       <updated>1493731982781</updated>
       <workItem from="1493731988509" duration="25443000" />
-      <workItem from="1494421789359" duration="72712000" />
+      <workItem from="1494421789359" duration="74420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116309000" />
+    <option name="totallyTimeSpent" value="118017000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -827,30 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="72" column="52" lean-forward="false" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/graphPerformance.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/CrmLogs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="184" column="0" lean-forward="false" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1491">
@@ -881,6 +893,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/CrmLogs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="316" column="43" lean-forward="false" selection-start-line="316" selection-start-column="34" selection-end-line="316" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="41" column="37" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/graphPerformance.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="42" column="57" lean-forward="false" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
           <folding />
         </state>
       </provider>
