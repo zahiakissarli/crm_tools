@@ -14,7 +14,7 @@ class CrmLogs
 {
     /**
      * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\CrmJobs")
-     * @ORM\JoinColumn(name="crmJobs", nullable=false)
+     * @ORM\JoinColumn(name="jobs_id", nullable=false)
      */
     private $crmJobs;
 

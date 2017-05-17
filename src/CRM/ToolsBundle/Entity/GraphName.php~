@@ -98,27 +98,4 @@ class GraphName
     {
         return $this->averageDurationJob;
     }
-
-    /**
-     * Set nameGraph
-     *
-     * @param string $nameGraph
-     * @return GraphName
-     */
-    public function setNameGraph($nameGraph)
-    {
-        $this->nameGraph = $nameGraph;
-
-        return $this;
-    }
-
-    /**
-     * Get nameGraph
-     *
-     * @return string 
-     */
-    public function getNameGraph()
-    {
-        return $this->nameGraph;
-    }
 }

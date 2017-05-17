@@ -1,0 +1,32 @@
+<?php
+
+namespace CRM\ToolsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+
+
+
+/**
+ * @ORM\Entity(readOnly=true)
+ * @ORM\Table(name="logs_view")
+ */
+class LogsView {
+    private function __construct() {}
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fileName", type="string", length=255)
+     */
+    private $fileName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="duration", type="integer", nullable=true)
+     */
+    private $duration;
+
+}
