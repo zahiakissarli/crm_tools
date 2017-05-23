@@ -92,11 +92,11 @@
                         <form action="{{path("crm_tools_graph")}}" method="GET">
                             <div class="form-group col-md-2"> <!-- Date input -->
                                 <label class="control-label" for="date">Date debut</label>
-                                <input class="form-control" id="date" name="date" placeholder="{{ startDate }}" type="text"/>
+                                <input class="form-control" id="date" name="date" placeholder="{{ startDate|date("d/m/Y") }}" type="text"/>
                             </div>
                             <div class="form-group col-md-2"> <!-- Date input -->
                                 <label class="control-label" for="date">Date fin</label>
-                                <input class="form-control" id="date" name="date" placeholder="{{ endDate }}" type="text"/>
+                                <input class="form-control" id="date" name="date" placeholder="{{ endDate|date("d/m/Y") }}" type="text"/>
                             </div>
                             <div class="form-group"> <!-- Submit button -->
                                 <button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>
@@ -117,70 +117,121 @@
                             <tr >
                                 <th class="row">Nom du fichier</th>
                                 {% for date in date_array %}
-                                    <th>{{ date }}</th>
+                                    <th>{{ date | date("d-m-Y") }}</th>
                                 {% endfor %}
-                                <th class="middleText">Moyenne Semaine </br> Du '{{ startDate }}'</br> Au '{{ endDate }}'</th>
+                                <th class="middleText">Moyenne Semaine </br> Du '{{ startDate | date("m-d-Y") }}'</br> Au '{{ endDate | date("m-d-Y") }}'</th>
 
                                 {% for key,dates in week_array %}
                                     {#{{ dump(key) }}#}
                                     {% if key == 0 %}
-                                        <th class="middleText">Moyenne Semaine -1 </br> '{{ dates['0'] }}' </br> Au '{{ dates['1'] }}'</th>
+                                        <th class="middleText">Moyenne Semaine -1 </br> '{{ dates['0'] | date("d-m-Y") }}' </br> Au '{{ dates['1'] | date("d-m-Y") }}'</th>
                                     {% elseif key == 1 %}
-                                        <th class="middleText">Moyenne mois </br> '{{ dates['0'] }}' </br> Au '{{ dates['1'] }}'</th>
+                                        <th class="middleText">Moyenne mois </br> '{{ dates['0'] | date("d-m-Y") }}' </br> Au '{{ dates['1'] | date("d-m-Y") }}'</th>
                                     {% elseif key == 2 %}
-                                        <th class="middleText">Moyenne mois -1</br> '{{ dates['0'] }}' </br> Au '{{ dates['1'] }}'</th>
+                                        <th class="middleText">Moyenne mois -1</br> '{{ dates['0'] | date("d-m-Y") }}' </br> Au '{{ dates['1'] | date("d-m-Y") }}'</th>
                                     {% endif %}
                                 {% endfor %}
 
                             </tr>
                         </thead>
-                        <tbody >
-                        <tr>
-                            <th scope="row">UCR_BOOKING_CP</th>
-                            <td class="greenCase">01:21:22</td>
-                            <td class="orangeCase">01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">UCR_CALCUL_AGREGATS</th>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">UCR_CIP_DATA</th>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                            <td>01:21:22</td>
-                        </tr>
-                        </tbody>
+
+                        {% for graph in result_graph_avg %}
+                        {#{{ dump(graph) }}#}
+                            <tbody>
+                            <tr>
+                                <th >{{ graph['graph_name'] }}</th>
+
+                            {% for current_date in date_array %}
+                                {#{{ dump(graph[current_date]) }}#}
+                                {% if graph[current_date] / graph['average_duration_job'] < 1.5 %}
+
+                                    <td class="greenCase">{{ graph[current_date] }}</td>
+
+                                {% elseif graph[current_date] / graph['average_duration_job'] < 5 %}
+                                    <td class="orangeCase">{{ graph[current_date] }}</td>
+
+                                {% else %}
+                                    <td class="orangeCase">{{ graph[current_date] }}</td>
+                                {% endif %}
+                            {% endfor %}
+                            <td> {{ graph["AVG_duration_week"] }} </td>
+                            <td> {{ graph["AVG_duration_week_1"] }} </td>
+                            <td> {{ graph["AVG_duration_month"] }} </td>
+                            <td> {{ graph["AVG_duration_month_1"] }} </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {#<tbody >#}
+                        {#<tr>#}
+                            {#<th scope="row">UCR_BOOKING_CP</th>#}
+                            {#<td class="greenCase">01:21:22</td>#}
+                            {#<td class="orangeCase">01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                        {#</tr>#}
+                        {#<tr>#}
+                            {#<th scope="row">UCR_CALCUL_AGREGATS</th>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                        {#</tr>#}
+                        {#<tr>#}
+                            {#<th scope="row">UCR_CIP_DATA</th>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                            {#<td>01:21:22</td>#}
+                        {#</tr>#}
+                        {#</tbody>#}
                     </table>
                 </div>
             </div>

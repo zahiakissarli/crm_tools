@@ -14,7 +14,7 @@ class CrmLogs
 {
     /**
      * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\CrmJobs")
-     * @ORM\JoinColumn(name="crmJobs", nullable=false)
+     * @ORM\JoinColumn(name="jobs_id", nullable=false)
      */
     private $crmJobs;
 
@@ -306,5 +306,28 @@ class CrmLogs
     public function getCrmJobs()
     {
         return $this->crmJobs;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     * @return CrmLogs
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
     }
 }

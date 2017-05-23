@@ -24,4 +24,13 @@ class GraphNameRepository extends EntityRepository
 
         return $graphs=$qb->getResult();
     }
+
+    public function findAllLogsView()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT G FROM CRMToolsBundle:GraphName G'
+            )
+            ->getResult();
+    }
 }

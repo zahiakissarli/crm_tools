@@ -18,17 +18,25 @@ class DefaultController extends Controller
     public function graphAction(Request $request)
     {
 
+//        $request = $this->getRequest();
+////        $request->query->get('submit');
+//        if($request->isMethod('GET')){
+//            var_dump($request);
+//        }
+//        $test= 'ce paragraphe'. "\n";
+//             $test.= ' j\'ajoute ça';
+
         $end_date = new \DateTime();
 
         $start_date = new \DateTime();
         $start_date->modify('-7 day');
 
-        $star_day_display= $start_date->format('d-m-Y');
-        $end_day_display= $end_date->format('d-m-Y');
+        $star_day_display= $start_date->format('Y-m-d');
+        $end_day_display= $end_date->format('Y-m-d');
 
         $date_array= array();
         while($start_date<=$end_date){
-            array_push($date_array,$start_date->format('d-m-Y'));
+            array_push($date_array,$start_date->format('Y-m-d'));
             $start_date->modify('+1 day');
         }
 
@@ -37,38 +45,75 @@ class DefaultController extends Controller
         $week_array= array();
 
         $start_week_1 = clone $start_date->modify('-8 day');
-        $start_week_1 = $start_week_1->format('d-m-Y');
+        $start_week_1 = $start_week_1->format('Y-m-d');
         $end_week_1 = clone $start_date->modify('+7 day');
-        $end_week_1= $end_week_1->format('d-m-Y');
+        $end_week_1= $end_week_1->format('Y-m-d');
         $week_array[]= array(
             '0' =>$start_week_1,
             '1' =>$end_week_1,
         );
 
         $start_month = clone $start_date->modify('-23 day');
-        $start_month = $start_month->format('d-m-Y');
+        $start_month = $start_month->format('Y-m-d');
         $end_month = clone $end_date;
-        $end_month = $end_month->format('d-m-Y');
+        $end_month = $end_month->format('Y-m-d');
         $week_array[]= array(
             '0' =>$start_month,
             '1' =>$end_month,
         );
 
         $end_month_1= clone $start_date;
-        $end_month_1 = $end_month_1->format('d-m-Y');
+        $end_month_1 = $end_month_1->format('Y-m-d');
         $start_month_1= clone $start_date->modify('-31 day');
-        $start_month_1 = $start_month_1->format('d-m-Y');
+        $start_month_1 = $start_month_1->format('Y-m-d');
         $week_array[]= array(
             '0' =>$start_month_1,
             '1' =>$end_month_1,
         );
-
+//        var_dump($start_month_1);die;
+        $em = $this->getDoctrine()->getManager();
+        $result_graph_avg = $em->getRepository('CRMToolsBundle:LogsView')
+            ->displayGraphTable($star_day_display, $end_day_display, $start_week_1, $end_week_1, $start_month, $end_month,
+                $start_month_1, $end_month_1, $date_array);
+//            var_dump($result_graph_avg);die;
         return $this->render('CRMToolsBundle:Monitoring:graphPerformance.html.twig', array(
             'startDate'  => $star_day_display,
             'endDate'    => $end_day_display,
             'date_array' => $date_array,
             'week_array' => $week_array,
+            'result_graph_avg' => $result_graph_avg,
+
         ));
+    }
+
+    public function logsViewAction()
+    {
+
+//        $em = $this->getDoctrine()->getManager();
+//        $test= $em->getRepository("CRMToolsBundle:LogsView")->findAll();
+//        var_dump($test);die;
+
+        $end_date_array = new \DateTime();
+
+        $start_date_array = new \DateTime();
+        $start_date_array->modify('-7 day');
+
+        $start_date= $start_date_array->format('Y-m-d');
+        $end_date= $end_date_array->format('Y-m-d');
+
+        $date_array= array();
+        while($start_date_array<=$end_date_array){
+            array_push($date_array,$start_date_array->format('Y-m-d'));
+            $start_date_array->modify('+1 day');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $result = $em->getRepository('CRMToolsBundle:LogsView')
+            ->displayGraphTable($start_date, $end_date, $date_array);
+        var_dump($result);die;
+
+
+        return new Response('test');
     }
 
     public function creatAction()
@@ -101,17 +146,6 @@ class DefaultController extends Controller
         }die;
 
 
-    }
-
-    public function logsViewAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $test= $em->getRepository("CRMToolsBundle:LogsView")->findAll();
-
-        var_dump($test);die;
-
-
-        return new Response('test');
     }
 
 }

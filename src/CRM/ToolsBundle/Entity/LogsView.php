@@ -5,12 +5,12 @@ namespace CRM\ToolsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 
-
-
-
 /**
+ *  LogsView
+ *
  * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="logs_view")
+ * @ORM\Entity(repositoryClass="CRM\ToolsBundle\Repository\LogsViewRepository")
  */
 class LogsView {
 
@@ -73,42 +73,42 @@ class LogsView {
      *
      * @ORM\Column(name="nbr_client", type="integer")
      */
-    private $nbr_client;
+    private $nbrClient;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbr_event", type="integer")
      */
-    private $nbr_event;
+    private $nbrEvent;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbr_booking", type="integer")
      */
-    private $nbr_booking;
+    private $nbrBooking;
 
     /**
      * @var DateTime
      *
      * @ORM\Column(name="file_date", type="date")
      */
-    private $file_date;
+    private $fileDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="graph_name", type="string", length=255)
      */
-    private $graph_name;
+    private $graphName;
 
     /**
      * @var int
      *
      * @ORM\Column(name="average_duration_job", type="integer")
      */
-    private $average_duration_job;
+    private $averageDurationJob;
 
     /**
      * @var Time
@@ -117,5 +117,5 @@ class LogsView {
      */
     private $durationString;
 
-
+    ////////////////////////////////////////////////
 }

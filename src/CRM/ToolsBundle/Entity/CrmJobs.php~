@@ -15,7 +15,7 @@ class CrmJobs
 
     /**
      * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\GraphName")
-     * @ORM\JoinColumn(name="graphName", nullable=false)
+     * @ORM\JoinColumn(name="graph_id", nullable=false)
      */
     private $graphName;
 
