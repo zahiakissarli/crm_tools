@@ -9,37 +9,79 @@
 {% block body %}
     {{ parent() }}
 
-    <div class="container containerHomePage">
 
+
+    <div class="container containerGraphPage">
         <!-- Begin of datepicker form -->
         <div class="bootstrap-iso">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        <form  action="{{path("crm_tools_graph") }}"  {{ form_enctype(form) }} method="GET" class="fos_user_profile_edit">
 
 
-                        <!-- Form code begins -->
-                        <form action="{{path("crm_tools_graph")}}" method="GET">
+                                <fieldset>
+
+                                    {#<dl>#}
+                                    {#<div class="form-group col-md-3"> <!-- Date input -->#}
+                                        {#<dt > {{ form_label(form.startDate) }}</dt>#}
+                                        {#<dt id="date" name="date"> {{ form_widget(form.startDate) }}</dt>#}
+
+                                    {#</div>#}
+
+
+
+                                    {#</dl>#}
+
+
+                                </fieldset>
+
                             <div class="form-group col-md-2"> <!-- Date input -->
-                                <label class="control-label" for="date">Date debut</label>
-                                <input class="form-control" id="date" name="date" placeholder="{{ startDate|date("d/m/Y") }}" type="text"/>
+                                <label class="control-label" for="date">{{ form_label(form.startDate) }}</label>
+                                <div id="date" name="date" placeholder=""> {{ form_widget(form.startDate) }}</div>
+                                {#<input class="form-control" id="date" name="date" placeholder="{{ startDate|date("d/m/Y") }}" type="text"/>#}
                             </div>
-                            <div class="form-group col-md-2"> <!-- Date input -->
-                                <label class="control-label" for="date">Date fin</label>
-                                <input class="form-control" id="date" name="date" placeholder="{{ endDate|date("d/m/Y") }}" type="text"/>
-                            </div>
-                            <div class="form-group"> <!-- Submit button -->
-                                <button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>
-                            </div>
+                            {#<div class="form-group col-md-2"> <!-- Date input -->#}
+                                {#<label class="control-label" for="date">Date fin</label>#}
+                                {#<input class="form-control" id="date" name="date" placeholder="{{ endDate|date("d/m/Y") }}" type="text"/>#}
+                            {#</div>#}
+                            {#<div class="form-group"> <!-- Submit button -->#}
+                                {#<button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>#}
+                            {#</div>#}
                         </form>
-                        <!-- Form code ends -->
-
                     </div>
                 </div>
             </div>
-        </div><!-- end of datepicker form -->
+        </div>
 
-        <div class="graphPage">
+
+
+        {#<!-- Begin of datepicker form -->#}
+        {#<div class="bootstrap-iso">#}
+            {#<div class="container-fluid">#}
+                {#<div class="row">#}
+                    {#<div class="col-md-12">#}
+                        {#<!-- Form code begins -->#}
+                        {#<form action="{{path("crm_tools_graph")}}" method="GET">#}
+                            {#<div class="form-group col-md-2"> <!-- Date input -->#}
+                                {#<label class="control-label" for="date">Date debut</label>#}
+                                {#<input class="form-control" id="date" name="date" placeholder="{{ startDate|date("d/m/Y") }}" type="text"/>#}
+                            {#</div>#}
+                            {#<div class="form-group col-md-2"> <!-- Date input -->#}
+                                {#<label class="control-label" for="date">Date fin</label>#}
+                                {#<input class="form-control" id="date" name="date" placeholder="{{ endDate|date("d/m/Y") }}" type="text"/>#}
+                            {#</div>#}
+                            {#<div class="form-group"> <!-- Submit button -->#}
+                                {#<button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>#}
+                            {#</div>#}
+                        {#</form>#}
+                        {#<!-- Form code ends -->#}
+
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div><!-- end of datepicker form -->#}
+
             <div class="bs-example col-md-12" data-example-id="simple-responsive-table" >
                 <div class="table-responsive">
                     <table class=" table table-bordered">
@@ -71,101 +113,28 @@
                             <tr>
                                 <th >{{ graph['graph_name'] }}</th>
 
-                            {% for current_date in date_array %}
-                                {#{{ dump(graph[current_date]) }}#}
-                                {% if graph[current_date] / graph['average_duration_job'] < 1.5 %}
+                                {% for current_date in date_array %}
+                                    {#{{ dump(graph[current_date]) }}#}
+                                    {% if graph[current_date] / graph['average_duration_job'] < 1.5 %}
 
-                                    <td class="greenCase">{{ graph[current_date] }}</td>
+                                        <td class="greenCase">{{ graph[current_date] }}</td>
 
-                                {% elseif graph[current_date] / graph['average_duration_job'] < 5 %}
-                                    <td class="orangeCase">{{ graph[current_date] }}</td>
+                                    {% elseif graph[current_date] / graph['average_duration_job'] < 5 %}
+                                        <td class="orangeCase">{{ graph[current_date] }}</td>
 
-                                {% else %}
-                                    <td class="orangeCase">{{ graph[current_date] }}</td>
-                                {% endif %}
-                            {% endfor %}
-                            <td> {{ graph["AVG_duration_week"] }} </td>
-                            <td> {{ graph["AVG_duration_week_1"] }} </td>
-                            <td> {{ graph["AVG_duration_month"] }} </td>
-                            <td> {{ graph["AVG_duration_month_1"] }} </td>
+                                    {% else %}
+                                        <td class="redCase">{{ graph[current_date] }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                                <td class="middleText"> {{ graph["AVG_duration_week"] }} </td>
+                                <td class="middleText"> {{ graph["AVG_duration_week_1"] }} </td>
+                                <td class="middleText"> {{ graph["AVG_duration_month"] }} </td>
+                                <td class="middleText"> {{ graph["AVG_duration_month_1"] }} </td>
                             </tr>
                         {% endfor %}
                     </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        {#<tbody >#}
-                        {#<tr>#}
-                            {#<th scope="row">UCR_BOOKING_CP</th>#}
-                            {#<td class="greenCase">01:21:22</td>#}
-                            {#<td class="orangeCase">01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                        {#</tr>#}
-                        {#<tr>#}
-                            {#<th scope="row">UCR_CALCUL_AGREGATS</th>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                        {#</tr>#}
-                        {#<tr>#}
-                            {#<th scope="row">UCR_CIP_DATA</th>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                            {#<td>01:21:22</td>#}
-                        {#</tr>#}
-                        {#</tbody>#}
-                    </table>
                 </div>
             </div>
-        </div>
     </div>
 
 {% endblock %}

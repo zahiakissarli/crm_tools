@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class LogsView {
 
-    private function __construct() {}
+//    private function __construct() {}
 
 
     /**
@@ -73,42 +73,42 @@ class LogsView {
      *
      * @ORM\Column(name="nbr_client", type="integer")
      */
-    private $nbr_client;
+    private $nbrClient;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbr_event", type="integer")
      */
-    private $nbr_event;
+    private $nbrEvent;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbr_booking", type="integer")
      */
-    private $nbr_booking;
+    private $nbrBooking;
 
     /**
      * @var DateTime
      *
      * @ORM\Column(name="file_date", type="date")
      */
-    private $file_date;
+    private $fileDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="graph_name", type="string", length=255)
      */
-    private $graph_name;
+    private $graphName;
 
     /**
      * @var int
      *
      * @ORM\Column(name="average_duration_job", type="integer")
      */
-    private $average_duration_job;
+    private $averageDurationJob;
 
     /**
      * @var Time
@@ -118,328 +118,4 @@ class LogsView {
     private $durationString;
 
     ////////////////////////////////////////////////
-
-
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     * @return LogsView
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set fileNameRoot
-     *
-     * @param string $fileNameRoot
-     * @return LogsView
-     */
-    public function setFileNameRoot($fileNameRoot)
-    {
-        $this->fileNameRoot = $fileNameRoot;
-
-        return $this;
-    }
-
-    /**
-     * Get fileNameRoot
-     *
-     * @return string 
-     */
-    public function getFileNameRoot()
-    {
-        return $this->fileNameRoot;
-    }
-
-    /**
-     * Set fileName
-     *
-     * @param string $fileName
-     * @return LogsView
-     */
-    public function setFileName($fileName)
-    {
-        $this->fileName = $fileName;
-
-        return $this;
-    }
-
-    /**
-     * Get fileName
-     *
-     * @return string 
-     */
-    public function getFileName()
-    {
-        return $this->fileName;
-    }
-
-    /**
-     * Set startDate
-     *
-     * @param \DateTime $startDate
-     * @return LogsView
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    /**
-     * Get startDate
-     *
-     * @return \DateTime 
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * Set endDate
-     *
-     * @param \DateTime $endDate
-     * @return LogsView
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    /**
-     * Get endDate
-     *
-     * @return \DateTime 
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * Set duration
-     *
-     * @param integer $duration
-     * @return LogsView
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return integer 
-     */
-    public function getDuration()
-    {
-        return $this->duration;
-    }
-
-    /**
-     * Set iteration
-     *
-     * @param integer $iteration
-     * @return LogsView
-     */
-    public function setIteration($iteration)
-    {
-        $this->iteration = $iteration;
-
-        return $this;
-    }
-
-    /**
-     * Get iteration
-     *
-     * @return integer 
-     */
-    public function getIteration()
-    {
-        return $this->iteration;
-    }
-
-    /**
-     * Set nbr_client
-     *
-     * @param integer $nbrClient
-     * @return LogsView
-     */
-    public function setNbrClient($nbrClient)
-    {
-        $this->nbr_client = $nbrClient;
-
-        return $this;
-    }
-
-    /**
-     * Get nbr_client
-     *
-     * @return integer 
-     */
-    public function getNbrClient()
-    {
-        return $this->nbr_client;
-    }
-
-    /**
-     * Set nbr_event
-     *
-     * @param integer $nbrEvent
-     * @return LogsView
-     */
-    public function setNbrEvent($nbrEvent)
-    {
-        $this->nbr_event = $nbrEvent;
-
-        return $this;
-    }
-
-    /**
-     * Get nbr_event
-     *
-     * @return integer 
-     */
-    public function getNbrEvent()
-    {
-        return $this->nbr_event;
-    }
-
-    /**
-     * Set nbr_booking
-     *
-     * @param integer $nbrBooking
-     * @return LogsView
-     */
-    public function setNbrBooking($nbrBooking)
-    {
-        $this->nbr_booking = $nbrBooking;
-
-        return $this;
-    }
-
-    /**
-     * Get nbr_booking
-     *
-     * @return integer 
-     */
-    public function getNbrBooking()
-    {
-        return $this->nbr_booking;
-    }
-
-    /**
-     * Set file_date
-     *
-     * @param \DateTime $fileDate
-     * @return LogsView
-     */
-    public function setFileDate($fileDate)
-    {
-        $this->file_date = $fileDate;
-
-        return $this;
-    }
-
-    /**
-     * Get file_date
-     *
-     * @return \DateTime 
-     */
-    public function getFileDate()
-    {
-        return $this->file_date;
-    }
-
-    /**
-     * Set graph_name
-     *
-     * @param string $graphName
-     * @return LogsView
-     */
-    public function setGraphName($graphName)
-    {
-        $this->graph_name = $graphName;
-
-        return $this;
-    }
-
-    /**
-     * Get graph_name
-     *
-     * @return string 
-     */
-    public function getGraphName()
-    {
-        return $this->graph_name;
-    }
-
-    /**
-     * Set average_duration_job
-     *
-     * @param integer $averageDurationJob
-     * @return LogsView
-     */
-    public function setAverageDurationJob($averageDurationJob)
-    {
-        $this->average_duration_job = $averageDurationJob;
-
-        return $this;
-    }
-
-    /**
-     * Get average_duration_job
-     *
-     * @return integer 
-     */
-    public function getAverageDurationJob()
-    {
-        return $this->average_duration_job;
-    }
-
-    /**
-     * Set durationString
-     *
-     * @param \DateTime $durationString
-     * @return LogsView
-     */
-    public function setDurationString($durationString)
-    {
-        $this->durationString = $durationString;
-
-        return $this;
-    }
-
-    /**
-     * Get durationString
-     *
-     * @return \DateTime 
-     */
-    public function getDurationString()
-    {
-        return $this->durationString;
-    }
 }

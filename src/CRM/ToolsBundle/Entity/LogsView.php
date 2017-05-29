@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class LogsView {
 
-    private function __construct() {}
+//    private function __construct() {}
 
 
     /**
@@ -118,4 +118,326 @@ class LogsView {
     private $durationString;
 
     ////////////////////////////////////////////////
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return LogsView
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fileNameRoot
+     *
+     * @param string $fileNameRoot
+     * @return LogsView
+     */
+    public function setFileNameRoot($fileNameRoot)
+    {
+        $this->fileNameRoot = $fileNameRoot;
+
+        return $this;
+    }
+
+    /**
+     * Get fileNameRoot
+     *
+     * @return string 
+     */
+    public function getFileNameRoot()
+    {
+        return $this->fileNameRoot;
+    }
+
+    /**
+     * Set fileName
+     *
+     * @param string $fileName
+     * @return LogsView
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    /**
+     * Get fileName
+     *
+     * @return string 
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     * @return LogsView
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     * @return LogsView
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime 
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     * @return LogsView
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer 
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * Set iteration
+     *
+     * @param integer $iteration
+     * @return LogsView
+     */
+    public function setIteration($iteration)
+    {
+        $this->iteration = $iteration;
+
+        return $this;
+    }
+
+    /**
+     * Get iteration
+     *
+     * @return integer 
+     */
+    public function getIteration()
+    {
+        return $this->iteration;
+    }
+
+    /**
+     * Set nbrClient
+     *
+     * @param integer $nbrClient
+     * @return LogsView
+     */
+    public function setNbrClient($nbrClient)
+    {
+        $this->nbrClient = $nbrClient;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrClient
+     *
+     * @return integer 
+     */
+    public function getNbrClient()
+    {
+        return $this->nbrClient;
+    }
+
+    /**
+     * Set nbrEvent
+     *
+     * @param integer $nbrEvent
+     * @return LogsView
+     */
+    public function setNbrEvent($nbrEvent)
+    {
+        $this->nbrEvent = $nbrEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrEvent
+     *
+     * @return integer 
+     */
+    public function getNbrEvent()
+    {
+        return $this->nbrEvent;
+    }
+
+    /**
+     * Set nbrBooking
+     *
+     * @param integer $nbrBooking
+     * @return LogsView
+     */
+    public function setNbrBooking($nbrBooking)
+    {
+        $this->nbrBooking = $nbrBooking;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrBooking
+     *
+     * @return integer 
+     */
+    public function getNbrBooking()
+    {
+        return $this->nbrBooking;
+    }
+
+    /**
+     * Set fileDate
+     *
+     * @param \DateTime $fileDate
+     * @return LogsView
+     */
+    public function setFileDate($fileDate)
+    {
+        $this->fileDate = $fileDate;
+
+        return $this;
+    }
+
+    /**
+     * Get fileDate
+     *
+     * @return \DateTime 
+     */
+    public function getFileDate()
+    {
+        return $this->fileDate;
+    }
+
+    /**
+     * Set graphName
+     *
+     * @param string $graphName
+     * @return LogsView
+     */
+    public function setGraphName($graphName)
+    {
+        $this->graphName = $graphName;
+
+        return $this;
+    }
+
+    /**
+     * Get graphName
+     *
+     * @return string 
+     */
+    public function getGraphName()
+    {
+        return $this->graphName;
+    }
+
+    /**
+     * Set averageDurationJob
+     *
+     * @param integer $averageDurationJob
+     * @return LogsView
+     */
+    public function setAverageDurationJob($averageDurationJob)
+    {
+        $this->averageDurationJob = $averageDurationJob;
+
+        return $this;
+    }
+
+    /**
+     * Get averageDurationJob
+     *
+     * @return integer 
+     */
+    public function getAverageDurationJob()
+    {
+        return $this->averageDurationJob;
+    }
+
+    /**
+     * Set durationString
+     *
+     * @param \DateTime $durationString
+     * @return LogsView
+     */
+    public function setDurationString($durationString)
+    {
+        $this->durationString = $durationString;
+
+        return $this;
+    }
+
+    /**
+     * Get durationString
+     *
+     * @return \DateTime 
+     */
+    public function getDurationString()
+    {
+        return $this->durationString;
+    }
 }

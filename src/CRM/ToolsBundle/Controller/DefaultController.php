@@ -3,6 +3,8 @@
 namespace CRM\ToolsBundle\Controller;
 
 
+use CRM\ToolsBundle\Entity\LogsView;
+use CRM\ToolsBundle\Form\LogsViewType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -76,13 +78,20 @@ class DefaultController extends Controller
             ->displayGraphTable($star_day_display, $end_day_display, $start_week_1, $end_week_1, $start_month, $end_month,
                 $start_month_1, $end_month_1, $date_array);
 //            var_dump($result_graph_avg);die;
+
+
+
+        $logsView = new LogsView();
+        $form = $this->createForm (new LogsViewType(), $logsView);
+        $request = $this->getRequest();
+
         return $this->render('CRMToolsBundle:Monitoring:graphPerformance.html.twig', array(
             'startDate'  => $star_day_display,
             'endDate'    => $end_day_display,
             'date_array' => $date_array,
             'week_array' => $week_array,
             'result_graph_avg' => $result_graph_avg,
-
+            'form'=>$form->createView(),
         ));
     }
 
