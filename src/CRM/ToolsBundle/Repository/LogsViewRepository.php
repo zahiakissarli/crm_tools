@@ -21,10 +21,10 @@ class LogsViewRepository extends EntityRepository
 
         return $results;
     }
-    
+
+    /*Query for displaying the graph array*/
      public function displayGraphTable($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
                                        $start_month_1, $end_month_1,$date_array){
-
 
          $sql= "SELECT
                     date_format(SEC_TO_TIME(avg(sum_duration_week/7)),'%T') as AVG_duration_week,
@@ -64,12 +64,328 @@ class LogsViewRepository extends EntityRepository
          $em = $this->getEntityManager();
          $query = $em->getConnection()->prepare($sql);
          $query->execute();
-
-
          $result = $query->fetchAll();
 
          return $result;
 
      }
+
+     /*Query for displaying NB Contacts*/
+     public function displayNbContacts($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                       $start_month_1, $end_month_1,$date_array) {
+
+          $sql= "SELECT
+                FILE_DATE,
+                floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then nbr_client end)) AS AVG_Client_week,
+                floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then nbr_client end)) AS AVG_Client_week_1,
+                floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then nbr_client end)) AS AVG_Client_month,
+                floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then nbr_client end)) AS AVG_Client_month_1, \n";
+
+          foreach($date_array as $key => $current_date) {
+                $tmp = 1;
+                $array_length = sizeof($date_array);
+
+                if ($key == ($array_length - $tmp)) {
+                    $sql.= "sum(case when file_date = '".$current_date."' then nbr_client end) as '".$current_date."'' \n";
+                } else {
+                    $sql.= "sum(case when file_date = '".$current_date."' then nbr_client end) as '".$current_date."', \n";
+                }
+          }
+
+          $sql = substr($sql,0,strlen($sql) - 3);
+          $sql.=  " \n";
+          $sql.= "FROM logs_view
+                  WHERE File_date BETWEEN ('".$start_month_1."') AND ('".$end_date."') AND file_name_root = 'rcie_contact_cp'";
+
+          $em = $this->getEntityManager();
+          $query = $em->getConnection()->prepare($sql);
+          $query->execute();
+          $result = $query->fetchAll();
+
+          return $result;
+     }
+
+     /*Query for displaying NB Contacts / Min*/
+     public function displayNbContactsMin($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                     $start_month_1, $end_month_1,$date_array) {
+
+        $sql ="SELECT
+            FILE_DATE,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then (nbr_client / duration) * 60 end)) AS AVG_Client_week,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then (nbr_client / duration) * 60 end)) AS AVG_Client_week_1,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then (nbr_client / duration) * 60 end)) AS AVG_Client_month,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then (nbr_client / duration) * 60 end)) AS AVG_Client_month_1, \n";
+
+        foreach($date_array as $key => $current_date) {
+            $tmp = 1;
+            $array_length = sizeof($date_array);
+
+            if ($key == ($array_length - $tmp)) {
+                $sql.= "floor(sum(case when file_date = '".$current_date."' then (nbr_client / duration) * 60 end)) as '".$current_date."'' \n";
+            } else {
+                $sql.= "floor(sum(case when file_date = '".$current_date."' then (nbr_client / duration) * 60 end)) as '".$current_date."', \n";
+            }
+        }
+
+        $sql = substr($sql,0,strlen($sql) - 3);
+        $sql.=  " \n";
+        $sql.= "FROM logs_view   
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date')";
+//        echo $sql;die;
+         $em = $this->getEntityManager();
+         $query = $em->getConnection()->prepare($sql);
+         $query->execute();
+         $result = $query->fetchAll();
+//         $resultSet= $this->wholeNumberObject($result);
+         return $result;
+     }
+
+    /*Query for displaying NB Events*/
+    public function displayNbEvents($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                         $start_month_1, $end_month_1,$date_array) {
+
+        $sql ="SELECT
+            FILE_DATE,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then nbr_event end)) AS AVG_Event_week,
+		    floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then nbr_event end)) AS AVG_Event_week_1,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then nbr_event end)) AS AVG_Event_month,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then nbr_event end)) AS AVG_Event_month_1,\n";
+
+        foreach($date_array as $key => $current_date) {
+            $tmp = 1;
+            $array_length = sizeof($date_array);
+
+            if ($key == ($array_length - $tmp)) {
+                $sql .= "sum(case when file_date = '$current_date' then nbr_event end) as '$current_date', \n";
+            } else {
+                $sql .= "sum(case when file_date = '$current_date' then nbr_event end) as '$current_date', \n";
+            }
+        }
+
+        $sql = substr($sql,0,strlen($sql) - 3);
+        $sql.=  " \n";
+        $sql.= "FROM logs_view
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') AND file_name_root = 'rcie_event_cp'";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    /*Query for displaying NB Booking Midas*/
+    public function displayNbBookingMidas($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                    $start_month_1, $end_month_1,$date_array) {
+
+        $sql ="SELECT
+            FILE_DATE,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then nbr_booking end)) AS AVG_booking_week,
+		    floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then nbr_booking end)) AS AVG_booking_week_1,
+		    floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then nbr_booking end)) AS AVG_booking_month,
+		    floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then nbr_booking end)) AS AVG_booking_month_1,\n";
+
+        foreach($date_array as $key => $current_date) {
+            $tmp = 1;
+            $array_length = sizeof($date_array);
+
+            if ($key == ($array_length - $tmp)) {
+                $sql .= "sum(case when file_date = '$current_date' then nbr_booking end) as '$current_date', \n";
+            } else {
+                $sql .= "sum(case when file_date = '$current_date' then nbr_booking end) as '$current_date', \n";
+            }
+        }
+
+        $sql = substr($sql,0,strlen($sql) - 3);
+        $sql.=  " \n";
+        $sql.= "FROM logs_view
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and file_name_root = 'rcst_res_cp'";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    /*Query for displaying NB Booking Midas / Min*/
+    public function displayNbBookingMidasMin($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                          $start_month_1, $end_month_1,$date_array) {
+
+        $sql ="SELECT
+            FILE_DATE,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then (nbr_booking / duration) * 60 end)) AS AVG_booking_week,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then (nbr_booking / duration) * 60 end)) AS AVG_booking_week_1,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then (nbr_booking / duration) * 60 end)) AS AVG_booking_month,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then (nbr_booking / duration) * 60 end)) AS AVG_booking_month_1,\n";
+
+        foreach($date_array as $key => $current_date) {
+            $tmp = 1;
+            $array_length = sizeof($date_array);
+
+            if ($key == ($array_length - $tmp)) {
+                $sql .= "floor(sum(case when file_date = '$current_date' then (nbr_booking  / duration) * 60 end)) as '$current_date'' \n";
+            } else {
+                $sql .= "floor(sum(case when file_date = '$current_date' then (nbr_booking  / duration) * 60 end)) as '$current_date', \n";
+            }
+        }
+
+        $sql = substr($sql,0,strlen($sql) - 3);
+        $sql.=  " \n";
+        $sql.= "FROM logs_view
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') AND file_name_root = 'rcst_res_cp'";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    /*Query for displaying NB Booking AP*/
+    public function displayNbBookingAp($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                             $start_month_1, $end_month_1,$date_array) {
+
+        $sql ="SELECT
+            FILE_DATE,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then nbr_booking end)) AS AVG_booking_week,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then nbr_booking end)) AS AVG_booking_week_1,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then nbr_booking end)) AS AVG_booking_month,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then nbr_booking end)) AS AVG_booking_month_1,\n";
+
+        foreach($date_array as $key => $current_date) {
+            $tmp = 1;
+            $array_length = sizeof($date_array);
+
+            if ($key == ($array_length - $tmp)) {
+                $sql .= "sum(case when file_date = '$current_date' then nbr_booking end) as '$current_date'' \n";
+            } else {
+                $sql .= "sum(case when file_date = '$current_date' then nbr_booking end) as '$current_date', \n";
+            }
+        }
+
+        $sql = substr($sql,0,strlen($sql) - 3);
+        $sql.=  " \n";
+        $sql.= "FROM logs_view
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') AND 
+		(
+			file_name_root = 'rcst_res_ap'
+		)";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    /*Query for displaying NB Booking AP / Min*/
+    public function displayNbBookingApMin($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                       $start_month_1, $end_month_1,$date_array) {
+
+        $sql ="SELECT
+            FILE_DATE,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then (nbr_booking / duration) * 60 end)) AS AVG_booking_week,
+		    floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then (nbr_booking / duration) * 60 end)) AS AVG_booking_week_1,
+		    floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then (nbr_booking / duration) * 60 end)) AS AVG_booking_month,
+		    floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then (nbr_booking / duration) * 60 end)) AS AVG_booking_month_1,\n";
+
+        foreach($date_array as $key => $current_date) {
+            $tmp = 1;
+            $array_length = sizeof($date_array);
+
+            if ($key == ($array_length - $tmp)) {
+                $sql .= "floor(sum(case when file_date = '$current_date' then (nbr_booking  / duration) * 60 end)) as '$current_date'' \n";
+            } else {
+                $sql .= "floor(sum(case when file_date = '$current_date' then (nbr_booking  / duration) * 60 end)) as '$current_date', \n";
+            }
+        }
+
+        $sql = substr($sql,0,strlen($sql) - 3);
+        $sql.=  " \n";
+        $sql.= "FROM logs_view
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and file_name_root = 'rcst_res_ap'";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    /*Query for displaying NB Booking BBOSS*/
+    public function displayNbBookingBboss($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                          $start_month_1, $end_month_1,$date_array) {
+
+        $sql ="SELECT
+            FILE_DATE,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then nbr_booking end)) AS AVG_booking_week,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then nbr_booking end)) AS AVG_booking_week_1,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then nbr_booking end)) AS AVG_booking_month,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then nbr_booking end)) AS AVG_booking_month_1,\n";
+
+        foreach($date_array as $key => $current_date) {
+            $tmp = 1;
+            $array_length = sizeof($date_array);
+
+            if ($key == ($array_length - $tmp)) {
+                $sql .= "sum(case when file_date = '$current_date' then nbr_booking end) as '$current_date'' \n";
+            } else {
+                $sql .= "sum(case when file_date = '$current_date' then nbr_booking end) as '$current_date', \n";
+            }
+        }
+
+        $sql = substr($sql,0,strlen($sql) - 3);
+        $sql.=  " \n";
+        $sql.= "FROM logs_view
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and file_name_root = 'rcst_res_bboss'";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    /*Query for displaying NB Booking BBOSS / Min*/
+    public function displayNbBookingBbossMin($start_date, $end_date, $start_week_1, $end_week_1, $start_month, $end_month,
+                                          $start_month_1, $end_month_1,$date_array) {
+
+        $sql ="SELECT
+            FILE_DATE,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_date') AND ('$end_date') then (nbr_booking / duration) * 60 end)) AS AVG_booking_week,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_week_1') AND ('$end_week_1') then (nbr_booking / duration) * 60 end)) AS AVG_booking_week_1,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month') AND ('$end_month') then (nbr_booking / duration) * 60 end)) AS AVG_booking_month,
+            floor(avg(case when FILE_DATE BETWEEN ('$start_month_1') AND ('$end_month_1') then (nbr_booking / duration) * 60 end)) AS AVG_booking_month_1,\n";
+
+        foreach($date_array as $key => $current_date) {
+            $tmp = 1;
+            $array_length = sizeof($date_array);
+
+            if ($key == ($array_length - $tmp)) {
+                $sql .= "floor(sum(case when file_date = '$current_date' then (nbr_booking  / duration) * 60 end)) as '$current_date'' \n";
+            } else {
+                $sql .= "floor(sum(case when file_date = '$current_date' then (nbr_booking  / duration) * 60 end)) as '$current_date', \n";
+            }
+        }
+
+        $sql = substr($sql,0,strlen($sql) - 3);
+        $sql.=  " \n";
+        $sql.= "FROM logs_view
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and file_name_root = 'rcst_res_bboss'";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    //    public function wholeNumberObject($resultSet){
+//
+//         foreach ($resultSet as $result){
+//             foreach ($result as $key=> $case) {
+//                 if($key!='file_date' && $result[$key]!= NULL ) {
+//                     $result[$key]= floor($result[$key]);
+//                 }
+//             }
+//             var_dump($result);
+//         }die;
+//        var_dump($resultSet);die;
+//         return $resultSet;
+//    }
 
 }

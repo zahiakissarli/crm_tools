@@ -5,6 +5,8 @@ namespace CRM\ToolsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class LogsViewType extends AbstractType
 {
@@ -13,28 +15,48 @@ class LogsViewType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('startDate',
-            'date',array(
-                'label'     => 'Date début formulaire',
-                'widget'    => 'single_text',
-                'format'    => 'dd-MM-yyyy',
-                'attr' => ['id' => 'date'],
-                'attr' => ['name' => 'date'],
-                'attr' => ['class' => 'js-datepicker'],
-            ))
-            ->add('endDate',
-                'date',array(
-                    'label'     => 'Date Fin formulaire',
-                    'widget'    => 'single_text',
-                    'format'    => 'dd-MM-yyyy',
-                    'attr'      => array(
-                        'class' => 'datepicker')
+
+        $builder->add('startDate', DateType::class, array(
+                    'widget' => 'single_text',
+                    'html5' => false,
+                    'format' => 'dd-MM-yyyy',
+                    'attr' => ['class' => 'js-datepicker'],
+
+
+                ))
+                ->add('endDate', DateType::class, array(
+                    'widget' => 'single_text',
+                    'html5' => false,
+                    'format' => 'dd-MM-yyyy',
+                    'attr' => ['class' => 'js-datepicker'],
                 ));
 
-//        $builder->add('fileName');
+
+
+
+       //encien formulaire
+//        $builder->add('startDate',
+//            'date',array(
+//                'label'     => 'Date début formulaire',
+//                'widget'    => 'single_text',
+//                'format'    => 'dd-MM-yyyy',
+//                'attr' => ['id' => 'date'],
+//                'attr' => ['name' => 'date'],
+//                'attr' => ['class' => 'js-datepicker'],
+//            ))
+//            ->add('endDate',
+//                'date',array(
+//                    'label'     => 'Date Fin formulaire',
+//                    'widget'    => 'single_text',
+//                    'format'    => 'dd-MM-yyyy',
+//                    'attr'      => array(
+//                        'class' => 'datepicker')
+//                ));
+
+//        $builder->add('fileName', TextType::class);
 //                ->add('id')
 //                ->add('fileNameRoot')
-//
+//                ->add('fileDate', DateType::class)
 //                ->add('startDate')
 //                ->add('endDate')
 //                ->add('duration')
