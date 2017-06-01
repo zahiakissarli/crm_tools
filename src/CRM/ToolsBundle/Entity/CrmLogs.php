@@ -14,7 +14,7 @@ class CrmLogs
 {
     /**
      * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\CrmJobs")
-     * @ORM\JoinColumn(name="jobs_id", nullable=false)
+     * @ORM\JoinColumn(name="job_id", nullable=true)
      */
     private $crmJobs;
 
@@ -33,6 +33,14 @@ class CrmLogs
      * @ORM\Column(name="fileName", type="string", length=255)
      */
     private $fileName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jobName", type="string", length=255)
+     */
+    private $jobName;
+
 
     /**
      * @var \DateTime
@@ -329,5 +337,28 @@ class CrmLogs
     public function getStartDate()
     {
         return $this->startDate;
+    }
+
+    /**
+     * Set jobName
+     *
+     * @param string $jobName
+     * @return CrmLogs
+     */
+    public function setJobName($jobName)
+    {
+        $this->jobName = $jobName;
+
+        return $this;
+    }
+
+    /**
+     * Get jobName
+     *
+     * @return string 
+     */
+    public function getJobName()
+    {
+        return $this->jobName;
     }
 }

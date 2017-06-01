@@ -14,10 +14,10 @@ class CrmJobs
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\GraphName")
-     * @ORM\JoinColumn(name="graph_id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\CrmGraphs")
+     * @ORM\JoinColumn(name="graph_id", nullable=true)
      */
-    private $graphName;
+    private $crmGraphs;
 
     /**
      * @var int
@@ -31,7 +31,7 @@ class CrmJobs
     /**
      * @var string
      *
-     * @ORM\Column(name="jobName", type="string", length=255, unique=true)
+     * @ORM\Column(name="jobName", type="string", length=255, nullable=true)
      */
     private $jobName;
 
@@ -45,7 +45,7 @@ class CrmJobs
     /**
      * @var bool
      *
-     * @ORM\Column(name="displayOrder", type="boolean")
+     * @ORM\Column(name="displayOrder", type="integer")
      */
     private $displayOrder;
 
@@ -127,28 +127,5 @@ class CrmJobs
     public function getDisplayOrder()
     {
         return $this->displayOrder;
-    }
-
-    /**
-     * Set graphName
-     *
-     * @param \CRM\ToolsBundle\Entity\GraphName $graphName
-     * @return CrmJobs
-     */
-    public function setGraphName(\CRM\ToolsBundle\Entity\GraphName $graphName)
-    {
-        $this->graphName = $graphName;
-
-        return $this;
-    }
-
-    /**
-     * Get graphName
-     *
-     * @return \CRM\ToolsBundle\Entity\GraphName 
-     */
-    public function getGraphName()
-    {
-        return $this->graphName;
     }
 }
