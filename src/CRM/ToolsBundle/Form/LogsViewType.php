@@ -15,24 +15,33 @@ class LogsViewType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $end_date = new \DateTime();
+        $end_date= $end_date->format('d-m-Y');
+
+        $start_date = new \DateTime();
+        $start_date->modify('-7 day');
+        $start_date= $start_date->format('d-m-Y');
 
         $builder->add('startDate', DateType::class, array(
-                    'widget' => 'single_text',
-                    'html5' => false,
-                    'format' => 'dd-MM-yyyy',
-                    'attr' => ['class' => 'js-datepicker'],
-
-
+                    'label'     =>'Date debut',
+                    'widget'    => 'single_text',
+                    'format'    => 'dd-MM-yyyy',
+                    'html5'     => false,
+                    'attr'      => ['class'         => 'form-control js-datepicker',
+                                      'id'          => 'date',
+                                      'name'        => 'date',
+                                      'placeholder' => $start_date]
                 ))
                 ->add('endDate', DateType::class, array(
-                    'widget' => 'single_text',
-                    'html5' => false,
-                    'format' => 'dd-MM-yyyy',
-                    'attr' => ['class' => 'js-datepicker'],
+                    'label'     =>'Date fin',
+                    'widget'    => 'single_text',
+                    'html5'     => false,
+                    'format'    => 'dd-MM-yyyy',
+                    'attr'      => ['class'         => 'form-control js-datepicker',
+                                      'id'          => 'date',
+                                      'name'        => 'date',
+                                      'placeholder' => $end_date]
                 ));
-
-
-
 
        //encien formulaire
 //        $builder->add('startDate',
