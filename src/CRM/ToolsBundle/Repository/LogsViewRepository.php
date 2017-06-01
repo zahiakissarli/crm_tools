@@ -35,7 +35,7 @@ class LogsViewRepository extends EntityRepository
                  FROM
                     (
                     SELECT
-                      average_duration_job, 
+                      average_graph_duration, 
                       graph_name, 
                       sum(case when file_date BETWEEN ('".$start_date."') AND ('".$end_date."') then duration end) AS sum_duration_week,
                       sum(case when file_date BETWEEN ('".$start_week_1."') AND ('".$end_week_1."') then duration end) AS sum_duration_week_1,
