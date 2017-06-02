@@ -21,7 +21,6 @@ class MonitoringController extends Controller
 
     public function graphAction(Request $request)
     {
-
 //        $request = $this->getRequest();
 ////        $request->query->get('submit');
 //        if($request->isMethod('GET')){
@@ -99,15 +98,15 @@ class MonitoringController extends Controller
 
     public function getDataPerformance($start_date, $end_date, $start_date_display, $end_date_display)
     {
-        $data_array = array();
         $data_array_perf = array();
+        $date_array = array();
         
         while ($start_date <= $end_date) {
-            array_push($data_array_perf, $start_date->format('Y-m-d'));
+            array_push($date_array, $start_date->format('Y-m-d'));
             $start_date->modify('+1 day');
         }
         
-        $data_array['date_array'] = $data_array_perf;
+        $data_array_perf['date_array'] = $date_array;
         
         $start_date = $start_date->modify('-8 day');
 
@@ -140,72 +139,73 @@ class MonitoringController extends Controller
             '1' => $end_month_1,
         );
 
-        $data_array['week_array'] = $week_array;
+        $data_array_perf['week_array'] = $week_array;
+//        var_dump($data_array_perf);die;
 
         $em = $this->getDoctrine()->getManager();
 
         /*Query for displaying the graph average*/
         $result_graph_avg = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayGraphTable($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_graph_avg'] = $result_graph_avg;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_graph_avg'] = $result_graph_avg;
 
         /*Query for displaying NB Contacts*/
         $result_nb_contacts = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbContacts($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_contacts'] = $result_nb_contacts;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_contacts'] = $result_nb_contacts;
 
 
         /*Query for displaying NB Contacts / Min*/
         $result_nb_contacts_min = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbContactsMin($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_contacts_min'] = $result_nb_contacts_min;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_contacts_min'] = $result_nb_contacts_min;
 
 
         /*Query for displaying NB Events*/
         $result_nb_events = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbEvents($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_events'] = $result_nb_events;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_events'] = $result_nb_events;
 
         /*Query for displaying NB Booking Midas*/
         $result_nb_booking_midas = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbBookingMidas($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_booking_midas'] = $result_nb_booking_midas;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_booking_midas'] = $result_nb_booking_midas;
 
         /*Query for displaying NB Booking Midas / Min*/
         $result_nb_booking_midas_min = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbBookingMidasMin($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_booking_midas_min'] = $result_nb_booking_midas_min;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_booking_midas_min'] = $result_nb_booking_midas_min;
 
         /*Query for displaying NB Booking AP*/
         $result_nb_booking_ap = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbBookingAp($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_booking_ap'] = $result_nb_booking_ap;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_booking_ap'] = $result_nb_booking_ap;
 
         /*Query for displaying NB Booking AP / Min*/
         $result_nb_booking_ap_min = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbBookingApMin($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_booking_ap_min'] = $result_nb_booking_ap_min;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_booking_ap_min'] = $result_nb_booking_ap_min;
 
         /*Query for displaying NB Booking BBOSS*/
         $result_nb_booking_bboss = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbBookingBboss($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_booking_bboss'] = $result_nb_booking_bboss;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_booking_bboss'] = $result_nb_booking_bboss;
 
         /*Query for displaying NB Booking BBOSS / Min*/
         $result_nb_booking_bboss_min = $em->getRepository('CRMToolsBundle:LogsView')
             ->displayNbBookingBbossMin($start_date_display, $end_date_display, $start_week_1, $end_week_1, $start_month, $end_month,
-                $start_month_1, $end_month_1, $data_array_perf);
-        $data_array['result_nb_booking_bboss_min'] = $result_nb_booking_bboss_min;
+                $start_month_1, $end_month_1, $date_array);
+        $data_array_perf['result_nb_booking_bboss_min'] = $result_nb_booking_bboss_min;
 
-        return $data_array;
+        return $data_array_perf;
     }
 }

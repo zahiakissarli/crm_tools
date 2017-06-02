@@ -106,11 +106,11 @@
                                 {% for current_date in date_array %}
 
                                     {#{{ dump(graph['duration_'~current_date]) }}#}
-                                    {% if (graph['duration_'~current_date] / graph['average_duration_job']) < 1.5 %}
+                                    {% if (graph['duration_'~current_date] / graph['average_graph_duration']) < 1.5 %}
 
                                         <td class="greenCase">{{ graph[current_date] }}</td>
 
-                                    {% elseif (graph['duration_'~current_date] / graph['average_duration_job']) < 5 %}
+                                    {% elseif (graph['duration_'~current_date] / graph['average_graph_duration']) < 5 %}
                                         <td class="orangeCase">{{ graph[current_date] }}</td>
 
                                     {% else %}

@@ -47,7 +47,6 @@ class LogsViewRepository extends EntityRepository
          foreach($date_array as $key => $current_date) {
              $tmp = 1;
              $array_length = sizeof($date_array);
-
              $sql.= "SEC_TO_TIME(sum(case when file_date = '" . $current_date . "' then Duration end)) as '".$current_date."', \n";
 
              if ($key == ($array_length - $tmp)) {
@@ -67,7 +66,6 @@ class LogsViewRepository extends EntityRepository
          $result = $query->fetchAll();
 
          return $result;
-
      }
 
      /*Query for displaying NB Contacts*/
