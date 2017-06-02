@@ -21,13 +21,6 @@ class MonitoringController extends Controller
 
     public function graphAction(Request $request)
     {
-//        $request = $this->getRequest();
-////        $request->query->get('submit');
-//        if($request->isMethod('GET')){
-//            var_dump($request);
-//        }
-//        $test= 'ce paragraphe'. "\n";
-//             $test.= ' j\'ajoute ça';
 
         $end_date = new \DateTime();
 
@@ -208,4 +201,6 @@ class MonitoringController extends Controller
 
         return $data_array_perf;
     }
+
+
 }

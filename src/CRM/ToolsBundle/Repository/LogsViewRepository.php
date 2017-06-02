@@ -93,7 +93,7 @@ class LogsViewRepository extends EntityRepository
           $sql = substr($sql,0,strlen($sql) - 3);
           $sql.=  " \n";
           $sql.= "FROM logs_view
-                  WHERE File_date BETWEEN ('".$start_month_1."') AND ('".$end_date."') AND file_name_root = 'rcie_contact_cp'";
+                  WHERE File_date BETWEEN ('".$start_month_1."') AND ('".$end_date."') AND job_name = 'rcie_contact_cp'";
 
           $em = $this->getEntityManager();
           $query = $em->getConnection()->prepare($sql);
@@ -163,7 +163,7 @@ class LogsViewRepository extends EntityRepository
         $sql = substr($sql,0,strlen($sql) - 3);
         $sql.=  " \n";
         $sql.= "FROM logs_view
-                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') AND file_name_root = 'rcie_event_cp'";
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') AND job_name = 'rcie_event_cp'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
@@ -196,7 +196,7 @@ class LogsViewRepository extends EntityRepository
         $sql = substr($sql,0,strlen($sql) - 3);
         $sql.=  " \n";
         $sql.= "FROM logs_view
-                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and file_name_root = 'rcst_res_cp'";
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and job_name = 'rcst_res_cp'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
@@ -229,7 +229,7 @@ class LogsViewRepository extends EntityRepository
         $sql = substr($sql,0,strlen($sql) - 3);
         $sql.=  " \n";
         $sql.= "FROM logs_view
-                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') AND file_name_root = 'rcst_res_cp'";
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') AND job_name = 'rcst_res_cp'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
@@ -264,7 +264,7 @@ class LogsViewRepository extends EntityRepository
         $sql.= "FROM logs_view
                 WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') AND 
 		(
-			file_name_root = 'rcst_res_ap'
+			job_name = 'rcst_res_ap'
 		)";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
@@ -298,7 +298,7 @@ class LogsViewRepository extends EntityRepository
         $sql = substr($sql,0,strlen($sql) - 3);
         $sql.=  " \n";
         $sql.= "FROM logs_view
-                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and file_name_root = 'rcst_res_ap'";
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and job_name = 'rcst_res_ap'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
@@ -331,7 +331,7 @@ class LogsViewRepository extends EntityRepository
         $sql = substr($sql,0,strlen($sql) - 3);
         $sql.=  " \n";
         $sql.= "FROM logs_view
-                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and file_name_root = 'rcst_res_bboss'";
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and job_name = 'rcst_res_bboss'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
@@ -364,26 +364,12 @@ class LogsViewRepository extends EntityRepository
         $sql = substr($sql,0,strlen($sql) - 3);
         $sql.=  " \n";
         $sql.= "FROM logs_view
-                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and file_name_root = 'rcst_res_bboss'";
+                WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date') and job_name = 'rcst_res_bboss'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
         $result = $query->fetchAll();
         return $result;
     }
-
-    //    public function wholeNumberObject($resultSet){
-//
-//         foreach ($resultSet as $result){
-//             foreach ($result as $key=> $case) {
-//                 if($key!='file_date' && $result[$key]!= NULL ) {
-//                     $result[$key]= floor($result[$key]);
-//                 }
-//             }
-//             var_dump($result);
-//         }die;
-//        var_dump($resultSet);die;
-//         return $resultSet;
-//    }
 
 }
