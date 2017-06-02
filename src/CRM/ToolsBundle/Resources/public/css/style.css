@@ -54,24 +54,6 @@ body {
 .menuHomePage .bodyMenu ul li a:hover, .menuHomePage .bodyMenu ul li a:focus{
     color: #0099FF;
 }
-
-.flex-init-setup {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-}
-
-.flex-ppal-setup {
-    -webkit-flex-flow: column wrap;
-    -moz-flex-flow: column wrap;
-    flex-flow: column wrap;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    justify-content: center;
-}
-
 /***********************************************END HOME PAGE*****************************************************/
 
 
