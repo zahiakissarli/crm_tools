@@ -10,7 +10,7 @@
 
     <div class=" container containerHomePage">
         <div class="col-md-12 menuHomePage">
-            <div class="col-md-2 col-md-offset-1 colonneMenu">
+                <div class="col-md-2 colonneMenu">
                 <div class="headMenu">
                     <p class="">MONITORING</p>
                 </div>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="bodyMenu">
                     <ul>
-                        <li><a href="{{'#'}}">Equipe RC Contact et booking</a></li>
+                        <li><a href="{{'#'}}">Contact and Booking forms</a></li>
                     </ul>
                 </div>
             </div>
@@ -40,9 +40,10 @@
                 </div>
                 <div class="bodyMenu">
                     <ul>
-                        <li><a href="{{'#'}}">Data quality</a></li>
-                        <li><a href="{{'#'}}">Data quality Bis</a></li>
-                        <li><a href="{{'#'}}">Métriques</a></li>
+                        <li><a href="{{ path('crm_errors_analysis') }}">Error's analysis</a></li>
+                        <li><a href="{{'#'}}">Customer consent by brand</a></li>
+                        <li><a href="{{'#'}}">Daily number of optin at null</a></li>
+                        <li><a href="{{'#'}}">Metrics</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,6 +75,8 @@
                     </ul>
                 </div>
             </div>
+
+
         </div>
     </div>
 {% endblock %}

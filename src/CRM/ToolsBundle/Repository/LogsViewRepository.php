@@ -371,5 +371,4 @@ class LogsViewRepository extends EntityRepository
         $result = $query->fetchAll();
         return $result;
     }
-
 }

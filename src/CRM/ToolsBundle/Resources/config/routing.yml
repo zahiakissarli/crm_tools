@@ -3,7 +3,7 @@ crm_tools_homepage:
     defaults: { _controller: CRMToolsBundle:Default:index }
 
 crm_tools_graph:
-    path:     /graph_performance
+    path:     /graphs_performance
     defaults: { _controller: CRMToolsBundle:Monitoring:graph }
 
 crm_tools_creat:
@@ -14,9 +14,13 @@ crm_tools_display:
     path:     /display
     defaults: { _controller: CRMToolsBundle:Default:display }
 
-
 crm_logs_view:
     path:     /logs_view
     defaults: { _controller: CRMToolsBundle:Monitoring:contact }
+
+crm_errors_analysis:
+    path:     /analyse_erreurs
+    defaults: { _controller: CRMToolsBundle:DataQuality:errorsAnalysis}
+
 
 

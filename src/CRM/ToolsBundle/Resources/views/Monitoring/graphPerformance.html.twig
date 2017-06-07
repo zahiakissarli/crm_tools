@@ -3,14 +3,14 @@
 {% extends "CRMToolsBundle::layout.html.twig" %}
 
 {% block title %}
-     Graph performance - {{ parent() }}
+     Graphs performance - {{ parent() }}
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
 
     <div class="container containerGraphPage">
-        <h1 class="titleGraph">Graph Performance</h1>
+        <h1 class="titleGraph">Graphs Performance</h1>
         <!-- Begin of datepicker form -->
         <div class="bootstrap-iso">
             <div class="container-fluid">
@@ -101,7 +101,7 @@
                     {% for graph in result_graph_avg %}
                     {#{{ dump(graph) }}#}
                         <tbody>
-                            <tr>
+                            <tr class="blueHover">
                                 <th >{{ graph['graph_name'] }}</th>
                                 {% for current_date in date_array %}
 
@@ -127,7 +127,7 @@
                                 <td class="LineBreak">&nbsp;</td>
                             </tr>
                             <!-- NB Contacts -->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Contacts</th>
                                 {% for contact in result_nb_contacts %}
                                     {% for current_date in date_array %}
@@ -140,7 +140,7 @@
                                 {% endfor %}
                             </tr>
                             <!-- NB Contact / Min -->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Contacts / Min</th>
                                 {% for contact in result_nb_contacts_min %}
                                     {% for current_date in date_array %}
@@ -156,7 +156,7 @@
                                 <td class="LineBreak">&nbsp;</td>
                             </tr>
                             <!-- NB Events -->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Events</th>
                                 {% for event in result_nb_events %}
                                     {% for current_date in date_array %}
@@ -172,7 +172,7 @@
                                 <td class="LineBreak">&nbsp;</td>
                             </tr>
                             <!-- NB Booking Midas -->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Bookings Midas</th>
                                 {% for booking in result_nb_booking_midas %}
                                     {% for current_date in date_array %}
@@ -185,7 +185,7 @@
                                 {% endfor %}
                             </tr>
                             <!-- NB Booking Midas / Min-->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Bookings Midas / Min</th>
                                 {% for booking in result_nb_booking_midas_min %}
                                     {% for current_date in date_array %}
@@ -201,7 +201,7 @@
                                 <td class="LineBreak">&nbsp;</td>
                             </tr>
                             <!-- NB Booking AP -->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Bookings AP</th>
                                 {% for booking in result_nb_booking_ap %}
                                     {% for current_date in date_array %}
@@ -214,7 +214,7 @@
                                 {% endfor %}
                             </tr>
                             <!-- NB Booking AP / Min -->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Bookings AP / Min</th>
                                 {% for booking in result_nb_booking_ap_min %}
                                     {% for current_date in date_array %}
@@ -230,7 +230,7 @@
                                 <td class="LineBreak">&nbsp;</td>
                             </tr>
                             <!-- NB Booking BBOSS -->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Bookings BBOSS</th>
                                 {% for booking in result_nb_booking_bboss %}
                                     {% for current_date in date_array %}
@@ -243,7 +243,7 @@
                                 {% endfor %}
                             </tr>
                             <!-- NB Booking BBOSS / Min -->
-                            <tr>
+                            <tr class="blueHover">
                                 <th>Nombre Bookings BBOSS / Min</th>
                                 {% for booking in result_nb_booking_bboss_min %}
                                     {% for current_date in date_array %}
@@ -255,10 +255,6 @@
                                     <td class="middleText"> {{ booking["AVG_booking_month_1"] }} </td>
                                 {% endfor %}
                             </tr>
-
-
-
-
                         </tbody>
 
                 </table>

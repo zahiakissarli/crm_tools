@@ -201,6 +201,4 @@ class MonitoringController extends Controller
 
         return $data_array_perf;
     }
-
-
 }

@@ -40,10 +40,9 @@
     /*    border: 1px solid red !important;*/
 }
 
-.table-bordered td:hover{
+.blueHover td:hover{
     background-color: #37519f;
     color: #fff;
-    /*    border: 1px solid red !important;*/
 }
 
 .middleText{
@@ -65,6 +64,7 @@
 }
 .LineBreak{
     border: none !important;
+
 }
 
 .titleGraph{

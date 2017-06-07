@@ -100,11 +100,12 @@ doctrine:
                 charset:  UTF8
             customer:
                 driver:   pdo_oci
-                host:     172.18.2.168
+                host:     eceisexpe-scan.pvcp.intra
                 port:     1521
-                dbname:   Q4
-                user:     zkissarli
-                password: ZKISSARLI
+                service:  true
+                dbname:   CRMRC1.PVCP.PRD
+                user:     zkissarli[CRM_TEAM]
+                password: zkissarli
                 charset:  UTF8
 
     orm:

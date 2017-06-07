@@ -1,0 +1,12 @@
+/**************************************CSS FROM ERROR'S ANALYSIS PAGE*********************************************/
+
+.test{
+    border: none !important;
+    border-left: none !important;
+
+}
+
+.test td:hover {
+    background: green !important;
+}
+
