@@ -12,20 +12,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class CrmQueriesRepository extends EntityRepository
 {
-
-    public function requestFromUcrTest()
-    {
-
-//        $sql= "SELECT * FROM P1RCST.ERR_BOOKING_CP  WHERE ID_CONTACT = 675039";
-        $sql= "select count(*) AS NB_Contact from P1RCST.CLI_CONTACT";
-
-//        echo $sql;die;
-
-        $em = $this->getEntityManager();
-        $query = $em->getConnection()->prepare($sql);
-        $query->execute();
-        $result = $query->fetchAll();
-//        var_dump($result);die;
-        return $result;
-    }
 }

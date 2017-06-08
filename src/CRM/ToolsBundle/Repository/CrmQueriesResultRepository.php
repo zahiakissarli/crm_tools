@@ -12,4 +12,59 @@ use Doctrine\ORM\EntityRepository;
  */
 class CrmQueriesResultRepository extends EntityRepository
 {
+    public function getDataQualityTable($date_array){
+
+//        $sql= "SELECT * FROM P1RCST.ERR_BOOKING_CP  WHERE ID_CONTACT = 675039";
+//        $sql= "select count(*) AS NB_Queries from P1RCST.CLI_CONTACT";
+
+        $sqlGrpName = "SELECT groupName from crm_queries WHERE pageName = 'brahim' group by groupName";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sqlGrpName);
+        $query->execute();
+        $groupsName = $query->fetchAll();
+//        var_dump($groupsName);die;
+        $dataQualities= array();
+        foreach ($groupsName as $group) {
+            $sql =
+                "SELECT crm_queries_result.queryName, \n";
+
+            foreach($date_array as $key => $current_date) {
+                $tmp = 1;
+                $array_length = sizeof($date_array);
+
+                if ($key == ($array_length - $tmp)) {
+                    $sql .= "max(case when queryDate = '$current_date' then queryResult end) as '$current_date' \n";
+                } else {
+                    $sql .= "max(case when queryDate = '$current_date' then queryResult end) as '$current_date', \n";
+                }
+            }
+
+            $sql = substr($sql,0,strlen($sql) - 2);
+            $sql .= " \n";
+            $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries_result.queryName = crm_queries.queryName 
+		    WHERE crm_queries.pageName = 'brahim' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
+
+            $em = $this->getEntityManager();
+            $query = $em->getConnection()->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            $groupName= $group['groupName'];
+//            var_dump($groupName);die;
+            $dataQualities[$groupName]= $result;
+
+//             array_push($dataQualities, $result);
+        }
+//        var_dump($dataQualities);die;
+        return $dataQualities;
+    }
+
+    public function getGroupsName(){
+
+        $sqlGrpName = "SELECT groupName from crm_queries WHERE pageName = 'brahim' group by groupName";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sqlGrpName);
+        $query->execute();
+        $groupsName = $query->fetchAll();
+        return $groupsName;
+    }
 }

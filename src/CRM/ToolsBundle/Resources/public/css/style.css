@@ -1,11 +1,22 @@
+
+/*********************************************CSS COMON FROM ALL PAGES****************************************************/
+
+.containerPage{
+    width: 100% !important;
+    margin: auto !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+
+
+/*********************************************CSS FROM HOME PAGE****************************************************/
 body {
     width: 85%;
     display: block;
     margin: auto !important;
     font-family: "Terminal Dosis",Arial,Helvetica,sans-serif !important;
 }
-
-/*********************************************CSS FROM HOME PAGE****************************************************/
 
 .containerHomePage{
     width: 75%;
@@ -55,5 +66,4 @@ body {
     color: #0099FF;
 }
 /***********************************************END HOME PAGE*****************************************************/
-
 

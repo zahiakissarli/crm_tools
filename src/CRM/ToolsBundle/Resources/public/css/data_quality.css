@@ -1,12 +1,38 @@
 /**************************************CSS FROM ERROR'S ANALYSIS PAGE*********************************************/
+.DatatableCss{
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    text-align: center;
+    font-size: 12.5px;
+    vertical-align: middle !important;
+    border: 1px solid #fff !important;
+}
 
-.test{
+.DatatableCss td{
+    font-size: 14px;
+}
+
+.blueBackgroundTh{
+    background-color: #0080ff;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+.greenBackgroundTh{
+    background-color: #2eb82e;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+.lineBreak{
     border: none !important;
     border-left: none !important;
 
 }
 
-.test td:hover {
+.lineBreak td:hover {
     background: green !important;
 }
-

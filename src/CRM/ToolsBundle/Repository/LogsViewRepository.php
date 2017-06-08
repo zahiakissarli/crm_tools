@@ -129,12 +129,10 @@ class LogsViewRepository extends EntityRepository
         $sql.=  " \n";
         $sql.= "FROM logs_view   
                 WHERE File_date BETWEEN ('$start_month_1') AND ('$end_date')";
-//        echo $sql;die;
          $em = $this->getEntityManager();
          $query = $em->getConnection()->prepare($sql);
          $query->execute();
          $result = $query->fetchAll();
-//         $resultSet= $this->wholeNumberObject($result);
          return $result;
      }
 

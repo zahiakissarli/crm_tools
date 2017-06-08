@@ -3,78 +3,40 @@
 {% extends "CRMToolsBundle::layout.html.twig" %}
 
 {% block title %}
-    Error's analysis - {{ parent() }}
+    Errors' analysis - {{ parent() }}
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
-
-    <div class="container containerGraphPage">
-        <h1 class="titleGraph">Error's analysis</h1>
-        <div class="bs-example col-md-12" data-example-id="simple-responsive-table" >
+    <div class="container containerPage">
+        <h1 class="titleGraph">Errors' analysis</h1>
             <div class="table-responsive">
-                <table class=" table table-bordered">
-                    <thead >
-                        <tr >
-                            <th class="row">Data_PV</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="blueHover">
-                        <th >Query_Name</th>
-                        <td >2017-05-27</td>
-                        <td>2017-05-28</td>
-                        <td>2017-05-29</td>
-                        <td>2017-05-30</td>
-                        <td>2017-05-31</td>
-                        <td>2017-05-01</td>
-                        <td>2017-05-02</td>
-                        <td>2017-05-03</td>
-                        <td>2017-05-04</td>
-                        <td>2017-05-05</td>
-                        <td>2017-05-06</td>
-                    </tr>
-                    <tr class="blueHover">
-                        <th >UNKNOWN_CONTACT_PV</th>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                    </tr>
+                <table class="container table table-bordered">
+                    <tbody class="DatatableCss">
+                        {% for key, dataQuality in dataQualities %}
+                                <tr class="greenBackgroundTh">
+                                    <th>{{ key }}</th>
+                                </tr>
 
-                    <tr>
-                        <td class="test">&nbsp;</td>
-                    </tr>
-                    <tr class="blueHover">
-                        <th >UNKNOWN_CONTACT_PV</th>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                        <td>1861</td>
-                    </tr>
-
+                            <tr class="blueBackgroundTh blueHover">
+                                <th class="row">QUERY  NAME</th>
+                                {% for current_date in date_array %}
+                                    <th>{{ current_date }} </th>
+                                {% endfor %}
+                            </tr>
+                            {% for data in dataQuality %}
+                                <tr class="blueHover">
+                                    <th>{{ data['queryName'] }}</th>
+                                    {% for current_date in date_array %}
+                                        <td>{{ data[current_date] }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                            <td class="lineBreak">&nbsp;</td>
+                        {% endfor %}
                     </tbody>
-
                 </table>
             </div>
-        </div><!-- end of displaying the graph average -->
+        {#</div><!-- end of displaying the graph average -->#}
     </div>
-
-
-    </div>
-
 {% endblock %}
