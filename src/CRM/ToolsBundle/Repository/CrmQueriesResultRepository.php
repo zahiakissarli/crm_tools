@@ -3,6 +3,7 @@
 namespace CRM\ToolsBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpKernel\Tests\EventListener\ValidateRequestListenerTest;
 
 /**
  * CrmQueriesResultRepository
@@ -26,7 +27,7 @@ class CrmQueriesResultRepository extends EntityRepository
         $dataQualities= array();
         foreach ($groupsName as $group) {
             $sql =
-                "SELECT crm_queries_result.queryName, \n";
+                "SELECT crm_queries.id, crm_queries_result.queryName, \n";
 
             foreach($date_array as $key => $current_date) {
                 $tmp = 1;
@@ -59,6 +60,41 @@ class CrmQueriesResultRepository extends EntityRepository
     }
 
     public function getGroupsName(){
+
+        $sqlGrpName = "SELECT groupName from crm_queries WHERE pageName = 'brahim' group by groupName";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sqlGrpName);
+        $query->execute();
+        $groupsName = $query->fetchAll();
+        return $groupsName;
+    }
+
+    public function reloadRequestOneQuery($query_id, $current_date){
+
+//        $sqlQueryName = "SELECT queryName from crm_queries WHERE id = '".$query_id."'";
+//        $em = $this->getEntityManager();
+//        $query = $em->getConnection()->prepare($sqlQueryName);
+//        $query->execute();
+//        $queryName = $query->fetchAll();
+
+        $sqlQueryText = "SELECT queryText FROM crm_queries WHERE id = '".$query_id."'";
+//        echo $sqlQueryText;die;
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sqlQueryText);
+        $query->execute();
+        $queryText = $query->fetchAll();
+
+        $sqlDeleteQueryResult = "DELETE FROM crm_queries_result WHERE queryDate = '2017-06-08' AND query_id = '".$query_id."'";
+
+//        echo $sqlDeleteQueryResult;die;
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sqlDeleteQueryResult);
+        $query->execute();
+
+        var_dump('test');die;
+//        delete from result_quality where Query_Date = '$date' and Query_Name = 'Incoherence_MD5_Email'
+        var_dump($queryText);die;
 
         $sqlGrpName = "SELECT groupName from crm_queries WHERE pageName = 'brahim' group by groupName";
         $em = $this->getEntityManager();

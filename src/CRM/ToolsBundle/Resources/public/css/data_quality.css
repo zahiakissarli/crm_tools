@@ -9,10 +9,11 @@
 
 .DatatableCss td{
     font-size: 14px;
+    vertical-align: middle !important;
 }
 
 .blueBackgroundTh{
-    background-color: #0080ff;
+    background-color: #0073e6;
     color: #fff;
     font-weight: bold;
 }
@@ -20,7 +21,7 @@
 
 
 .greenBackgroundTh{
-    background-color: #2eb82e;
+    background-color: #5bb024;
     color: #fff;
     font-weight: bold;
     font-size: 15px;
@@ -36,3 +37,18 @@
 .lineBreak td:hover {
     background: green !important;
 }
+
+.buttonQueryName{
+    padding: 5px !important;
+    background: #37519f !important;
+    border-radius: 0px !important;
+    font-size: 12.5px !important;
+    text-align: left !important;
+    margin: 0px !important;
+
+}
+
+.buttonQueryName:hover, .buttonQueryName:focus{
+    background-color: #2e4385 !important;
+}
+
