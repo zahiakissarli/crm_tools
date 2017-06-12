@@ -45,13 +45,26 @@ class DataQualityController extends Controller
         $current_date= $current_date->format('Y-m-d');
 
         $em = $this->getDoctrine()->getManager();
+        $queryText = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
+            ->getOneQueryText($query_id, $current_date);
+//            ->reloadRequestOneQuery($query_id, $current_date);
+
+        $em = $this->getDoctrine()->getManager('customer');
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
-            ->reloadRequestOneQuery($query_id, $current_date);
+            ->getResultFromUcr($queryText);
+//        var_dump($dataQualities);die;
+
         return $this->redirect( $this->generateUrl('crm_errors_analysis'));
-        var_dump('toto');die;
+
     }
 
     public function displayAction(){
+
+        $em = $this->getDoctrine()->getManager('customer');
+        $groupsName = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
+            ->test();
+        var_dump($groupsName);die;
+
 
         $date = date("Y-m-d");
         $date_before = date('Y-m-d',strtotime(date('Y-m-d'))-86400);

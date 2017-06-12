@@ -69,38 +69,60 @@ class CrmQueriesResultRepository extends EntityRepository
         return $groupsName;
     }
 
-    public function reloadRequestOneQuery($query_id, $current_date){
+    public function getOneQueryText($query_id, $current_date){
 
-//        $sqlQueryName = "SELECT queryName from crm_queries WHERE id = '".$query_id."'";
-//        $em = $this->getEntityManager();
-//        $query = $em->getConnection()->prepare($sqlQueryName);
-//        $query->execute();
-//        $queryName = $query->fetchAll();
-
-        $sqlQueryText = "SELECT queryText FROM crm_queries WHERE id = '".$query_id."'";
+        if($current_date){
+            $sqlDeleteQueryResult = "DELETE FROM crm_queries_result WHERE queryDate = '" . $current_date . "' AND query_id = '" . $query_id . "'";
+            $em = $this->getEntityManager();
+            $query = $em->getConnection()->prepare($sqlDeleteQueryResult);
+            $query->execute();
+        }
+        $sqlQueryText = "SELECT queryText FROM crm_queries WHERE id = '" . $query_id . "'";
 //        echo $sqlQueryText;die;
 
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sqlQueryText);
         $query->execute();
-        $queryText = $query->fetchAll();
-
-        $sqlDeleteQueryResult = "DELETE FROM crm_queries_result WHERE queryDate = '2017-06-08' AND query_id = '".$query_id."'";
-
-//        echo $sqlDeleteQueryResult;die;
-        $em = $this->getEntityManager();
-        $query = $em->getConnection()->prepare($sqlDeleteQueryResult);
-        $query->execute();
-
-        var_dump('test');die;
-//        delete from result_quality where Query_Date = '$date' and Query_Name = 'Incoherence_MD5_Email'
+        $queryTextArray = $query->fetchAll();
+        $queryText = $queryTextArray[0]['queryText'];
         var_dump($queryText);die;
+        return $queryText;
+    }
 
-        $sqlGrpName = "SELECT groupName from crm_queries WHERE pageName = 'brahim' group by groupName";
+    public function getResultFromUcr($queryText){
+
+        $sql= $queryText;
+//        echo $sql;die;
+//        var_dump($queryText);die;
+//        $sql = "select count(*) AS NB_Queries from P1RCST.CLI_CONTACT";
+//        echo $queryTest;die;
+
         $em = $this->getEntityManager();
-        $query = $em->getConnection()->prepare($sqlGrpName);
+        $query = $em->getConnection()->prepare($sql);
         $query->execute();
-        $groupsName = $query->fetchAll();
-        return $groupsName;
+        $result = $query->fetchAll();
+        var_dump($result);die;
+        return $result;
+
+//        delete from result_quality where Query_Date = '$date' and Query_Name = 'Incoherence_MD5_Email'
+//        var_dump($queryText);die;
+//
+//        $sqlGrpName = "SELECT groupName from crm_queries WHERE pageName = 'brahim' group by groupName";
+//        $em = $this->getEntityManager();
+//        $query = $em->getConnection()->prepare($sqlGrpName);
+//        $query->execute();
+//        $groupsName = $query->fetchAll();
+//        return $groupsName;
+    }
+
+    public function test(){
+
+        $queryTest = "select count(*) AS NB_Queries from P1RCST.CLI_CONTACT";
+//        echo $queryTest;die;
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($queryTest);
+        $query->execute();
+        $test = $query->fetchAll();
+        var_dump($test);die;
     }
 }
