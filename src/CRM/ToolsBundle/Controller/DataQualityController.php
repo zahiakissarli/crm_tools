@@ -4,6 +4,9 @@ namespace CRM\ToolsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\PhpProcess;
+use Symfony\Component\Process\ProcessBuilder;
 
 class DataQualityController extends Controller
 {
@@ -56,6 +59,34 @@ class DataQualityController extends Controller
 
         return $this->redirect( $this->generateUrl('crm_errors_analysis'));
 
+    }
+
+
+    public function useProcessAction(){
+//        var_dump('test');die;
+
+//        $query_id= 159;
+
+
+//        $builder = new ProcessBuilder();
+//        $builder->setArguments(array(
+//            'C:\wamp\www load.php',
+//            'load.php',
+//            $query_id
+//            ));
+//        $builder->getProcess()->run();
+//        var_dump($builder);die;
+        $php_file= 'C:\wamp\www\load.php';
+        $php_script=  file_get_contents($php_file);
+//        var_dump($php_script);die;
+        $process = new PhpProcess($php_script);
+//        var_dump($process);die;
+        $process->run();
+        $output = $process->getOutput();
+        echo $output;
+//        require("C:\wamp\www\load.php");
+
+        die;
     }
 
     public function displayAction(){

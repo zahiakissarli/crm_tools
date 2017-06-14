@@ -85,16 +85,17 @@ class CrmQueriesResultRepository extends EntityRepository
         $query->execute();
         $queryTextArray = $query->fetchAll();
         $queryText = $queryTextArray[0]['queryText'];
-        var_dump($queryText);die;
+//        var_dump($queryText);die;
         return $queryText;
     }
 
     public function getResultFromUcr($queryText){
-
-        $sql= $queryText;
+//        var_dump('test');die;
+//        $sql= $queryText;
 //        echo $sql;die;
 //        var_dump($queryText);die;
 //        $sql = "select count(*) AS NB_Queries from P1RCST.CLI_CONTACT";
+        $sql = "select count(*) AS NB_Contact from Q5RCPV.CLI_CONTACT";
 //        echo $queryTest;die;
 
         $em = $this->getEntityManager();

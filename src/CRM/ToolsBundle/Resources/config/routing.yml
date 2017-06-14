@@ -16,7 +16,7 @@ crm_errors_analysis:
 
 crm_tools_display:
     path:     /display
-    defaults: { _controller: CRMToolsBundle:DataQuality:display }
+    defaults: { _controller: CRMToolsBundle:DataQuality:useProcess }
 
 crm_reload_request:
     path:     /reload_request/{query_id}
