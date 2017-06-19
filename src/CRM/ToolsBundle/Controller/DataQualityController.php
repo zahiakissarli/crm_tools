@@ -24,12 +24,11 @@ class DataQualityController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $groupsName = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
+        $groupsName = $em->getRepository('CRMToolsBundle:CrmQueries')
             ->getGroupsName();
-
         $em = $this->getDoctrine()->getManager();
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
-            ->getDataQualityTable($date_array);
+            ->getDataQualityTable($groupsName, $date_array);
 //        var_dump($dataQualities);die;
 
         return $this->render('CRMToolsBundle:DataQuality:errorsAnalysis.html.twig',array(
@@ -48,10 +47,9 @@ class DataQualityController extends Controller
         $current_date= $current_date->format('Y-m-d');
 
         $em = $this->getDoctrine()->getManager();
-        $queryText = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
+        $queryText = $em->getRepository('CRMToolsBundle:CrmQueries')
             ->getOneQueryText($query_id, $current_date);
-//            ->reloadRequestOneQuery($query_id, $current_date);
-
+        echo ($queryText);die;
         $em = $this->getDoctrine()->getManager('customer');
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
             ->getResultFromUcr($queryText);
@@ -63,30 +61,37 @@ class DataQualityController extends Controller
 
 
     public function useProcessAction(){
-//        var_dump('test');die;
+//      phpinfo();die;
 
-//        $query_id= 159;
+        $query_id= 159;
 
 
 //        $builder = new ProcessBuilder();
+//        $php_file= 'C:\wamp\www\load.php';
+//        $php_script=  file_get_contents($php_file);
 //        $builder->setArguments(array(
-//            'C:\wamp\www load.php',
-//            'load.php',
+//            $php_script,
 //            $query_id
 //            ));
+//
 //        $builder->getProcess()->run();
 //        var_dump($builder);die;
-        $php_file= 'C:\wamp\www\load.php';
+
+//        echo '$queryId = null;'; //;die;
+        $php_file= 'C:\wamp\www\crm_tools\load.php';
+//        $php_file= 'C:\wamp\www\load.php';
         $php_script=  file_get_contents($php_file);
+//        $php_script = str_replace('$query_id = null;', $query_id ,$php_script);
+        $php_script = str_replace('$query_id = null;','$query_id = ' . $query_id . ";",$php_script);
+
 //        var_dump($php_script);die;
         $process = new PhpProcess($php_script);
 //        var_dump($process);die;
         $process->run();
         $output = $process->getOutput();
-        echo $output;
+        echo $output;die;
 //        require("C:\wamp\www\load.php");
 
-        die;
     }
 
     public function displayAction(){

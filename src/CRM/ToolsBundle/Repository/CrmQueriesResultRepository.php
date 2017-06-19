@@ -13,17 +13,13 @@ use Symfony\Component\HttpKernel\Tests\EventListener\ValidateRequestListenerTest
  */
 class CrmQueriesResultRepository extends EntityRepository
 {
-    public function getDataQualityTable($date_array){
+    public function getDataQualityTable($groupsName, $date_array){
 
 //        $sql= "SELECT * FROM P1RCST.ERR_BOOKING_CP  WHERE ID_CONTACT = 675039";
 //        $sql= "select count(*) AS NB_Queries from P1RCST.CLI_CONTACT";
 
-        $sqlGrpName = "SELECT groupName from crm_queries WHERE pageName = 'brahim' group by groupName";
-        $em = $this->getEntityManager();
-        $query = $em->getConnection()->prepare($sqlGrpName);
-        $query->execute();
-        $groupsName = $query->fetchAll();
-//        var_dump($groupsName);die;
+
+        $groupsName = $groupsName;
         $dataQualities= array();
         foreach ($groupsName as $group) {
             $sql =
@@ -43,8 +39,8 @@ class CrmQueriesResultRepository extends EntityRepository
             $sql = substr($sql,0,strlen($sql) - 2);
             $sql .= " \n";
             $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries_result.queryName = crm_queries.queryName 
-		    WHERE crm_queries.pageName = 'brahim' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
-
+		    WHERE crm_queries.pageName = 'error_analysis' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
+//            echo $sql;die;
             $em = $this->getEntityManager();
             $query = $em->getConnection()->prepare($sql);
             $query->execute();
@@ -57,16 +53,6 @@ class CrmQueriesResultRepository extends EntityRepository
         }
 //        var_dump($dataQualities);die;
         return $dataQualities;
-    }
-
-    public function getGroupsName(){
-
-        $sqlGrpName = "SELECT groupName from crm_queries WHERE pageName = 'brahim' group by groupName";
-        $em = $this->getEntityManager();
-        $query = $em->getConnection()->prepare($sqlGrpName);
-        $query->execute();
-        $groupsName = $query->fetchAll();
-        return $groupsName;
     }
 
     public function getOneQueryText($query_id, $current_date){
@@ -102,7 +88,7 @@ class CrmQueriesResultRepository extends EntityRepository
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
         $result = $query->fetchAll();
-        var_dump($result);die;
+//        var_dump($result);die;
         return $result;
 
 //        delete from result_quality where Query_Date = '$date' and Query_Name = 'Incoherence_MD5_Email'
